@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Theme toggle palette
+ * Light: cream bg, black text, wine primary actions, red highlights
+ * Dark: deep wine/charcoal bg, cream text, red primary actions, white secondary borders/icons
+ */
+:root {
+  --background: #faf7f2;
+  --foreground: #0a0a0a;
+  --muted: #525252;
+  --primary: #6b1f30;
+  --on-primary: #ffffff;
+  --highlight: #b91c1c;
+  --border: rgba(10, 10, 10, 0.12);
+  --border-secondary: rgba(10, 10, 10, 0.22);
+  --surface: #ffffff;
+  --accent-soft: #f0e8df;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #141218;
+  --foreground: #faf7f2;
+  --muted: #a89a9e;
+  --primary: #dc2626;
+  --on-primary: #ffffff;
+  --highlight: #f87171;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-secondary: rgba(255, 255, 255, 0.42);
+  --surface: #1c181c;
+  --accent-soft: #2a2428;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-highlight: var(--highlight);
+  --color-accent-soft: var(--accent-soft);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-fraunces);
+}
+
+/* Smooth theme switching (next-themes class on html) */
+html {
+  transition: color-scheme 0.35s ease;
+}
+
+html,
+body {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+/* Cards, nav chrome, buttons: border + shadow track theme */
+.theme-surface,
+.theme-card,
+.theme-btn {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.theme-card {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.3s ease;
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  .theme-surface,
+  .theme-card,
+  .theme-btn {
+    transition: none !important;
+  }
+
+  .hero-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.hero-animate {
+  opacity: 0;
+  animation: hero-fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-animate-1 {
+  animation-delay: 0.05s;
+}
+.hero-animate-2 {
+  animation-delay: 0.12s;
+}
+.hero-animate-3 {
+  animation-delay: 0.2s;
+}
+.hero-animate-4 {
+  animation-delay: 0.28s;
+}
+.hero-animate-5 {
+  animation-delay: 0.36s;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.45;
+  transition: opacity 0.35s ease;
+  background-image:
+    radial-gradient(ellipse 88% 58% at 6% -8%, rgba(107, 31, 48, 0.1), transparent 52%),
+    radial-gradient(ellipse 72% 48% at 94% 102%, rgba(185, 28, 28, 0.06), transparent 48%);
+}
+
+.dark body::before {
+  opacity: 0.5;
+  background-image:
+    radial-gradient(ellipse 78% 52% at 10% 2%, rgba(220, 38, 38, 0.12), transparent 52%),
+    radial-gradient(ellipse 58% 42% at 94% 94%, rgba(248, 113, 113, 0.08), transparent 45%);
+}
