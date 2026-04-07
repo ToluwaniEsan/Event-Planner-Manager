@@ -1,0 +1,92 @@
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum MessageSender {
+  USER
+  VENDOR
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  events   Event[]
+  messages Message[]
+}
+
+model Event {
+  id         String    @id @default(cuid())
+  userId     String
+  title      String
+  date       DateTime?
+  location   String?
+  guestCount Int?
+  budget     Decimal?  @db.Decimal(12, 2)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+}
+
+model Vendor {
+  id        String   @id @default(cuid())
+  name      String
+  category  String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bookings Booking[]
+  messages Message[]
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  eventId   String
+  vendorId  String
+  status    BookingStatus @default(PENDING)
+  notes     String?
+  totalPrice Decimal?     @db.Decimal(10, 2)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  event  Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  vendor Vendor @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+  @@index([vendorId])
+}
+
+model Message {
+  id        String        @id @default(cuid())
+  userId    String
+  vendorId  String
+  sender    MessageSender
+  body      String
+  readAt    DateTime?
+  createdAt DateTime      @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vendor Vendor @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+
+  @@index([userId, vendorId])
+  @@index([createdAt])
+}
