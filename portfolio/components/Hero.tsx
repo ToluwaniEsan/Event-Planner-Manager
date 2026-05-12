@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileDown } from "lucide-react";
 import { PAGE_CONTAINER } from "@/lib/site-layout";
-import { HeroSignalPanel } from "@/components/HeroSignalPanel";
 
 type HeroProps = {
   name: string;
@@ -94,8 +93,6 @@ export function Hero({ name, headline, bio, avatar, resumePdf }: HeroProps) {
                 />
               </div>
             ) : null}
-
-            <HeroSignalPanel />
           </div>
         </div>
       </div>

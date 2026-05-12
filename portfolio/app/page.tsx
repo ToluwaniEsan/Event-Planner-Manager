@@ -61,14 +61,6 @@ export default async function HomePage() {
                 At a glance
               </p>
               <ul className="mt-5 space-y-4 text-sm">
-                <li className="flex gap-3 border-b border-[var(--border)] pb-4">
-                  <span className="shrink-0 font-semibold text-foreground">Focus</span>
-                  <span className="text-muted">Durable systems &amp; long-term user value</span>
-                </li>
-                <li className="flex gap-3 border-b border-[var(--border)] pb-4">
-                  <span className="shrink-0 font-semibold text-foreground">How I decide</span>
-                  <span className="text-muted">Depth on real needs—not one-off novelty</span>
-                </li>
                 <li className="flex gap-3">
                   <span className="shrink-0 font-semibold text-foreground">Collaboration</span>
                   <span className="text-muted">Readable code, clean interfaces, clear tradeoffs</span>
@@ -199,7 +191,7 @@ export default async function HomePage() {
             <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-[var(--border)] bg-gradient-to-br from-accent-soft/60 via-background to-background px-8 py-10 shadow-sm sm:flex-row sm:items-center sm:px-10 lg:px-12">
               <div className="max-w-2xl">
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground [font-family:var(--font-display),serif] sm:text-3xl">
-                  Let&apos;s talk about what you&apos;re building for the long run.
+                  Let&apos;s connect
                 </h2>
                 <p className="mt-3 text-muted">
                   Open to roles and collaborations where resilient platforms and careful execution

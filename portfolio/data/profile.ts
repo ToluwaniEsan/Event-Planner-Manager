@@ -143,18 +143,6 @@ export const profile: Profile = {
       ],
     },
     {
-      role: "Student",
-      company: "Leland Product Management Bootcamp",
-      location: "Huntsville, AL",
-      start: "Summer 2025",
-      end: "Summer 2025",
-      bullets: [
-        "Studied with product managers from multiple companies on prioritization, planning, and stakeholder alignment.",
-        "Completed one-on-one sessions with senior PMs for strategic feedback on career direction.",
-        "Strengthened data-informed decision-making tied to business outcomes.",
-      ],
-    },
-    {
       role: "VR / 3D developer (undergraduate research)",
       company: "College of Engineering and Technology, Alabama A&M University",
       location: "Huntsville, AL",
@@ -176,6 +164,28 @@ export const profile: Profile = {
       highlights: [
         "GPA 3.96 / 4.00 · Presidential Scholar · Dean's List",
         "Coursework: Python, data structures, C++, Java, discrete structures, advanced programming, digital logic, probability & statistics",
+      ],
+    },
+    {
+      school: "Leland Product Management Bootcamp",
+      degree: "Student · Huntsville, AL",
+      start: "Summer 2025",
+      end: "Summer 2025",
+      highlights: [
+        "Studied with product managers from multiple companies on prioritization, planning, and stakeholder alignment.",
+        "Completed one-on-one sessions with senior PMs for strategic feedback on career direction.",
+        "Strengthened data-informed decision-making tied to business outcomes.",
+      ],
+    },
+    {
+      school: "Scrum.org",
+      degree: "Professional Scrum Master I (PSM I)",
+      start: "Spring 2026",
+      end: "Spring 2026",
+      highlights: [
+        "Earned PSM I by demonstrating Scrum theory—accountabilities, events, artifacts, and commitments—to a professional standard.",
+        "Leveled up facilitation and impediment-removal thinking for iterative delivery alongside coursework and team projects.",
+        "Grounded prioritization and planning in empirical process control, transparency, and inspect-and-adapt feedback loops.",
       ],
     },
   ],
