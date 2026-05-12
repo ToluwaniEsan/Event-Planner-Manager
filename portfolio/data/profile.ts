@@ -7,6 +7,8 @@ export type ProfileLinks = {
   github: string;
   linkedin: string;
   email: string;
+  /** Second address shown on Contact next to primary, e.g. personal Gmail. */
+  emailSecondary?: string;
   /** E.164 or formatted; shown on Contact. Optional. */
   phone?: string;
   resumePdf?: string;
@@ -105,6 +107,7 @@ export const profile: Profile = {
     github: "https://github.com/ToluwaniEsan",
     linkedin: "https://www.linkedin.com/in/esan-toluwani",
     email: "mailto:toluwani.esan@bulldogs.aamu.edu",
+    emailSecondary: "mailto:esantoluwani@gmail.com",
     phone: "(256) 417-7347",
     resumePdf: "/resume.pdf",
   },
