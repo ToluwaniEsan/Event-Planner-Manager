@@ -39,14 +39,17 @@ export function ModeToggle({
   }
 
   const pad = "p-1";
-  const btn = size === "md" ? "px-3.5 py-2 text-sm" : "px-2.5 py-1.5 text-xs";
+  const btn =
+    size === "md"
+      ? "px-4 py-2 text-xs"
+      : "px-3 py-1.5 text-[11px]";
 
   return (
     <div
       role="group"
       aria-label="Career focus"
       data-active-mode={mode}
-      className={`mode-toggle relative inline-grid grid-cols-2 ${pad} rounded-full border border-[var(--border)] bg-surface/80 shadow-sm backdrop-blur-sm dark:border-[color:var(--border-secondary)] ${className}`}
+      className={`mode-toggle relative inline-grid grid-cols-2 ${pad} rounded-full border border-[var(--border)] bg-surface shadow-sm backdrop-blur-sm ${className}`}
     >
       <span className="mode-toggle-indicator" aria-hidden />
       {CAREER_MODES.map((option: CareerMode) => {
@@ -60,10 +63,8 @@ export function ModeToggle({
             type="button"
             onClick={() => setMode(option)}
             aria-pressed={active}
-            className={`${btn} relative z-10 rounded-full font-semibold tracking-tight transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${
-              active
-                ? "text-on-primary"
-                : "text-muted hover:text-foreground"
+            className={`${btn} relative z-10 whitespace-nowrap rounded-full font-mono font-medium uppercase tracking-[0.03em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${
+              active ? "text-on-button" : "text-muted hover:text-foreground"
             }`}
           >
             {label}

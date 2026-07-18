@@ -4,6 +4,10 @@ type SectionProps = {
   id?: string;
   title: string;
   eyebrow?: string;
+  /** Monospace index prefix, e.g. "01". */
+  num?: string;
+  /** Short right-aligned note beside the title (desktop). */
+  note?: string;
   children: React.ReactNode;
   className?: string;
   /** Tighter vertical rhythm for denser pages. */
@@ -16,23 +20,33 @@ export function Section({
   id,
   title,
   eyebrow,
+  num,
+  note,
   children,
   className = "",
   dense = false,
   showTitle = true,
 }: SectionProps) {
-  const py = dense ? "py-10 sm:py-14" : "py-12 sm:py-16";
+  const py = dense ? "py-14 sm:py-20" : "py-16 sm:py-24";
   return (
     <section id={id} className={`scroll-mt-24 ${py} ${className}`}>
       <div className={PAGE_CONTAINER}>
         {showTitle ? (
-          <header className="mb-8 flex flex-col gap-2 lg:mb-10 lg:max-w-4xl">
-            {eyebrow ? (
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
+          <header className="mb-10 flex flex-wrap items-end justify-between gap-6 lg:mb-12">
+            <div>
+              {eyebrow ? (
+                <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.08em] text-primary">
+                  {num ? `${num} \u2014 ` : ""}
+                  {eyebrow}
+                </p>
+              ) : null}
+              <h2 className="text-3xl font-extrabold tracking-[-0.02em] text-foreground sm:text-4xl">
+                {title}
+              </h2>
+            </div>
+            {note ? (
+              <p className="max-w-[330px] text-sm leading-relaxed text-muted">{note}</p>
             ) : null}
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-[2.5rem] [font-family:var(--font-display),serif]">
-              {title}
-            </h2>
           </header>
         ) : null}
         {children}

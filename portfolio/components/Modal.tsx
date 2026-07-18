@@ -50,7 +50,7 @@ export function Modal({ open, onClose, title, children, size = "md" }: ModalProp
       {open ? (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
           <motion.div
-            className="absolute inset-0 bg-[#1a0a0f]/55 backdrop-blur-[3px] dark:bg-black/70"
+            className="absolute inset-0 bg-[#060a14]/60 backdrop-blur-[4px] dark:bg-black/70"
             aria-hidden
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

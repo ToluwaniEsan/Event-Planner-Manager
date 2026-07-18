@@ -15,7 +15,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <span
-        className="inline-flex h-9 w-9 shrink-0 rounded-lg border border-transparent"
+        className="inline-flex h-9 w-9 shrink-0 rounded-full border border-transparent"
         aria-hidden
       />
     );
@@ -27,10 +27,21 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="theme-btn inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--border)] bg-surface text-muted transition-colors hover:border-primary/45 hover:bg-accent-soft hover:text-highlight dark:border-[color:var(--border-secondary)] dark:hover:border-white/50 dark:hover:bg-white/[0.06] dark:hover:text-foreground"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="theme-btn group/theme relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[var(--border)] text-muted transition-[border-color,color,transform] duration-300 hover:rotate-12 hover:border-primary hover:text-primary active:scale-90 motion-reduce:transition-none motion-reduce:hover:rotate-0"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {isDark ? <Sun className="h-4 w-4" aria-hidden /> : <Moon className="h-4 w-4" aria-hidden />}
+      <Sun
+        className={`absolute h-4 w-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.25,0.64,1)] motion-reduce:transition-none ${
+          isDark ? "-rotate-90 scale-[0.3] opacity-0" : "rotate-0 scale-100 opacity-100"
+        }`}
+        aria-hidden
+      />
+      <Moon
+        className={`absolute h-4 w-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.25,0.64,1)] motion-reduce:transition-none ${
+          isDark ? "rotate-0 scale-100 opacity-100" : "rotate-90 scale-[0.3] opacity-0"
+        }`}
+        aria-hidden
+      />
     </button>
   );
 }

@@ -26,10 +26,9 @@ export function CredentialsSection({ certificates }: CredentialsSectionProps) {
 
   return (
     <>
-      <p className="mb-8 max-w-3xl text-muted">
-        Hover a card—the preview lifts to show there&apos;s more inside. Click to open the certificate
-        in a viewer (PDFs embed here; you can still download the full file). HEIC/photo files use
-        download + optional image preview.
+      <p className="mb-8 max-w-3xl text-sm leading-relaxed text-muted">
+        Hover or focus a card to peek; click to open the certificate in a viewer. PDFs embed
+        inline and stay downloadable.
       </p>
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {certificates.map((c, i) => (

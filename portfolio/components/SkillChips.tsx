@@ -4,24 +4,29 @@ type SkillChipsProps = {
   groups: SkillGroup[];
 };
 
+/**
+ * Ruled skill-group columns: monospace group headers and bordered list rows
+ * whose square bullet flips to the accent color on hover.
+ */
 export function SkillChips({ groups }: SkillChipsProps) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
+    <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--border)] sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
       {groups.map((group) => (
-        <div
-          key={group.title}
-          className="theme-card group rounded-2xl border border-[var(--border)] bg-surface/55 p-6 shadow-sm backdrop-blur-sm hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg dark:hover:border-highlight/40 sm:col-span-1 xl:col-span-2"
-        >
-          <div className="mb-4 flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-            <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>
-          </div>
-          <ul className="flex flex-wrap gap-2">
+        <div key={group.title} className="bg-background p-7 transition-colors duration-300">
+          <h3 className="mb-4 font-mono text-[11.5px] font-semibold uppercase tracking-[0.08em] text-primary">
+            {group.title}
+          </h3>
+          <ul>
             {group.items.map((item) => (
-              <li key={item}>
-                <span className="inline-flex rounded-full border border-[var(--border)] bg-background/80 px-3 py-1.5 text-xs font-medium text-muted transition-colors group-hover:border-primary/35 dark:group-hover:border-highlight/35">
-                  {item}
-                </span>
+              <li
+                key={item}
+                className="group/skill flex items-center gap-2.5 border-b border-[var(--border)] py-2.5 text-sm font-medium text-muted transition-[color,padding-left] duration-200 last:border-b-0 hover:pl-1 hover:text-foreground motion-reduce:transition-none"
+              >
+                <span
+                  className="h-1.5 w-1.5 shrink-0 bg-[var(--border)] transition-[background-color,transform] duration-200 group-hover/skill:scale-125 group-hover/skill:bg-primary motion-reduce:transition-none"
+                  aria-hidden
+                />
+                {item}
               </li>
             ))}
           </ul>

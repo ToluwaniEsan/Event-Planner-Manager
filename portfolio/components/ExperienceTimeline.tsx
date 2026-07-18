@@ -4,29 +4,57 @@ type ExperienceTimelineProps = {
   entries: ExperienceEntry[];
 };
 
+const INDEX_LETTERS = "ABCDEFGH";
+
+/** Ledger-style experience rows: mono index, role/org, dashed bullet rules. */
 export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
   return (
-    <ol className="relative border-l border-[var(--border)] pl-6">
-      {entries.map((job) => (
-        <li key={`${job.company}-${job.role}-${job.start}`} className="mb-8 last:mb-0">
-          <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-primary shadow-[0_0_0_4px_var(--background)] ring-4 ring-[color:var(--mode-glow)]" />
-          <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-foreground">{job.role}</h3>
-              <p className="text-sm font-medium text-primary">{job.company}</p>
+    <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-background">
+      {entries.map((job, i) => (
+        <article
+          key={`${job.company}-${job.role}-${job.start}`}
+          className="border-b border-[var(--border)] px-6 py-6 transition-colors duration-200 last:border-b-0 hover:bg-surface sm:px-7"
+        >
+          <div className="flex items-start gap-5">
+            <span
+              className="mt-1 font-mono text-xs font-medium text-primary"
+              aria-hidden
+            >
+              {INDEX_LETTERS[i] ?? i + 1}
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
+                <div>
+                  <h3 className="text-base font-bold tracking-[-0.01em] text-foreground">
+                    {job.role}
+                  </h3>
+                  <p className="mt-0.5 text-[13px] text-muted">
+                    {job.company}
+                    {job.location ? ` \u00b7 ${job.location}` : ""}
+                  </p>
+                </div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.04em] text-faint">
+                  {job.start} {"\u2014"} {job.end}
+                </p>
+              </div>
+              <ul className="mt-3">
+                {job.bullets.map((b) => (
+                  <li
+                    key={b}
+                    className="relative border-t border-dashed border-[var(--border)] py-2.5 pl-5 text-sm leading-relaxed text-muted"
+                  >
+                    <span
+                      className="absolute left-0 top-[1.05rem] h-[7px] w-[7px] rounded-full bg-primary"
+                      aria-hidden
+                    />
+                    {b}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-sm text-muted">
-              {job.start} – {job.end}
-              {job.location ? ` · ${job.location}` : ""}
-            </p>
           </div>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
-            {job.bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
-        </li>
+        </article>
       ))}
-    </ol>
+    </div>
   );
 }
