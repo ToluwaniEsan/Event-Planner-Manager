@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
-import { profile } from "@/data/profile";
+import { getDefaultPresentation, profile } from "@/data/profile";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Providers } from "@/components/Providers";
@@ -19,17 +19,18 @@ const fraunces = Fraunces({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
+const defaultPresentation = getDefaultPresentation();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.identity.name} — ${profile.identity.headline}`,
+    default: `${profile.identity.name} — ${defaultPresentation.headline}`,
     template: `%s · ${profile.identity.name}`,
   },
-  description: profile.identity.bio,
+  description: defaultPresentation.bio,
   openGraph: {
-    title: `${profile.identity.name} — ${profile.identity.headline}`,
-    description: profile.identity.bio,
+    title: `${profile.identity.name} — ${defaultPresentation.headline}`,
+    description: defaultPresentation.bio,
     url: siteUrl,
     siteName: profile.identity.name,
     locale: "en_US",
@@ -37,14 +38,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.identity.name} — ${profile.identity.headline}`,
-    description: profile.identity.bio,
+    title: `${profile.identity.name} — ${defaultPresentation.headline}`,
+    description: defaultPresentation.bio,
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${dmSans.variable} ${fraunces.variable}`}
+      data-mode="product"
+      suppressHydrationWarning
+    >
       <body className="min-h-screen antialiased">
         <Providers>
           <SiteHeader name={profile.identity.name} links={profile.links} />

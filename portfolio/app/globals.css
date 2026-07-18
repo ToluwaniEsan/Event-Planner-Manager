@@ -3,11 +3,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Theme toggle palette
- * Light: cream bg, black text, wine primary actions, red highlights
- * Dark: deep wine/charcoal bg, cream text, red primary actions, white secondary borders/icons
+ * Dual-track theme
+ * Product (default): cream bg, wine primary, red highlights
+ * Engineering: cooler teal/slate accents over the same base system
  */
-:root {
+:root,
+html[data-mode="product"] {
   --background: #faf7f2;
   --foreground: #0a0a0a;
   --muted: #525252;
@@ -18,10 +19,33 @@
   --border-secondary: rgba(10, 10, 10, 0.22);
   --surface: #ffffff;
   --accent-soft: #f0e8df;
+  --orb-a: rgba(107, 31, 48, 0.14);
+  --orb-b: rgba(185, 28, 28, 0.1);
+  --cta-from: rgba(240, 232, 223, 0.75);
+  --mode-glow: rgba(107, 31, 48, 0.12);
   color-scheme: light;
 }
 
-.dark {
+html[data-mode="engineering"] {
+  --background: #f5f7f9;
+  --foreground: #0b1220;
+  --muted: #4b5563;
+  --primary: #0f766e;
+  --on-primary: #ffffff;
+  --highlight: #0e7490;
+  --border: rgba(15, 23, 42, 0.12);
+  --border-secondary: rgba(15, 23, 42, 0.22);
+  --surface: #ffffff;
+  --accent-soft: #e7eef2;
+  --orb-a: rgba(15, 118, 110, 0.14);
+  --orb-b: rgba(14, 116, 144, 0.1);
+  --cta-from: rgba(231, 238, 242, 0.8);
+  --mode-glow: rgba(15, 118, 110, 0.12);
+  color-scheme: light;
+}
+
+.dark,
+html.dark[data-mode="product"] {
   --background: #141218;
   --foreground: #faf7f2;
   --muted: #a89a9e;
@@ -32,6 +56,28 @@
   --border-secondary: rgba(255, 255, 255, 0.42);
   --surface: #1c181c;
   --accent-soft: #2a2428;
+  --orb-a: rgba(220, 38, 38, 0.16);
+  --orb-b: rgba(248, 113, 113, 0.1);
+  --cta-from: rgba(42, 36, 40, 0.85);
+  --mode-glow: rgba(220, 38, 38, 0.16);
+  color-scheme: dark;
+}
+
+html.dark[data-mode="engineering"] {
+  --background: #0f1418;
+  --foreground: #eef6f7;
+  --muted: #9aadb3;
+  --primary: #2dd4bf;
+  --on-primary: #042f2e;
+  --highlight: #67e8f9;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-secondary: rgba(255, 255, 255, 0.4);
+  --surface: #161c21;
+  --accent-soft: #1e2a2f;
+  --orb-a: rgba(45, 212, 191, 0.14);
+  --orb-b: rgba(103, 232, 249, 0.1);
+  --cta-from: rgba(30, 42, 47, 0.9);
+  --mode-glow: rgba(45, 212, 191, 0.14);
   color-scheme: dark;
 }
 
@@ -48,7 +94,6 @@
   --font-display: var(--font-fraunces);
 }
 
-/* Smooth theme switching (next-themes class on html) */
 html {
   transition: color-scheme 0.35s ease;
 }
@@ -60,10 +105,14 @@ body {
     color 0.35s ease;
 }
 
-/* Cards, nav chrome, buttons: border + shadow track theme */
 .theme-surface,
 .theme-card,
-.theme-btn {
+.theme-btn,
+.mode-toggle,
+.metric-card,
+.glance-panel,
+.cta-panel,
+.mode-badge {
   transition:
     background-color 0.35s ease,
     color 0.35s ease,
@@ -72,12 +121,78 @@ body {
 }
 
 .theme-card {
+  min-width: 0;
+  max-width: 100%;
   transition:
     background-color 0.35s ease,
     color 0.35s ease,
     border-color 0.35s ease,
     box-shadow 0.35s ease,
     transform 0.3s ease;
+}
+
+.mode-toggle {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.mode-toggle-indicator {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  width: calc(50% - 0.25rem);
+  z-index: 0;
+  border-radius: 9999px;
+  background: var(--primary);
+  box-shadow: 0 6px 18px -8px var(--primary);
+  transform: translateX(0);
+  transition:
+    transform 0.48s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.mode-toggle[data-active-mode="engineering"] .mode-toggle-indicator {
+  transform: translateX(100%);
+}
+
+html[data-mode="product"] .theme-card,
+html[data-mode="product"] .metric-card,
+html[data-mode="product"] .glance-panel {
+  border-radius: 1.25rem;
+}
+
+html[data-mode="engineering"] .theme-card,
+html[data-mode="engineering"] .metric-card,
+html[data-mode="engineering"] .glance-panel {
+  border-radius: 0.75rem;
+}
+
+html[data-mode="engineering"] .theme-card {
+  background-image: linear-gradient(145deg, transparent 70%, var(--mode-glow));
+}
+
+.hero-orb-a {
+  background: var(--orb-a);
+}
+
+.hero-orb-b {
+  background: var(--orb-b);
+}
+
+.cta-panel {
+  background: linear-gradient(135deg, var(--cta-from), var(--background) 55%, var(--background));
+  box-shadow: 0 0 0 1px transparent, 0 18px 40px -28px var(--mode-glow);
+}
+
+.metric-card,
+.glance-panel {
+  box-shadow: 0 10px 30px -24px var(--mode-glow);
+}
+
+.hero-copy {
+  transition: opacity 0.25s ease, color 0.35s ease;
 }
 
 @keyframes hero-fade-up {
@@ -91,12 +206,108 @@ body {
   }
 }
 
+@keyframes product-mode-enter {
+  from {
+    opacity: 0.72;
+    transform: translateY(10px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes engineering-mode-enter {
+  from {
+    opacity: 0.68;
+    transform: translateX(10px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes mode-accent-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-115%) skewX(-10deg);
+  }
+  18% {
+    opacity: 0.5;
+  }
+  72% {
+    opacity: 0.24;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(115%) skewX(-10deg);
+  }
+}
+
+@keyframes mode-toggle-pop {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.025);
+  }
+}
+
+html[data-mode-transition] body::after {
+  content: "";
+  position: fixed;
+  inset: -12% -35%;
+  z-index: 80;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    var(--orb-a) 43%,
+    color-mix(in srgb, var(--primary) 24%, transparent) 50%,
+    var(--orb-b) 57%,
+    transparent 70%
+  );
+  animation: mode-accent-sweep 0.68s cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform, opacity;
+}
+
+html[data-mode-transition] .mode-toggle {
+  animation: mode-toggle-pop 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mode-transition-shell {
+  overflow: clip;
+}
+
+html[data-mode="product"] .mode-transition-shell {
+  animation: product-mode-enter 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+html[data-mode="engineering"] .mode-transition-shell {
+  animation: engineering-mode-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+html[data-mode="engineering"] .hero-animate {
+  animation-name: engineering-mode-enter;
+  animation-duration: 0.58s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html,
   body,
   .theme-surface,
   .theme-card,
-  .theme-btn {
+  .theme-btn,
+  .mode-toggle,
+  .metric-card,
+  .glance-panel,
+  .cta-panel,
+  .mode-badge,
+  .hero-copy {
     transition: none !important;
   }
 
@@ -104,6 +315,23 @@ body {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .mode-transition-shell {
+    animation: none !important;
+  }
+
+  .mode-toggle-indicator {
+    transition: none !important;
+  }
+
+  html[data-mode-transition] body::after {
+    display: none;
+    animation: none !important;
+  }
+
+  html[data-mode-transition] .mode-toggle {
+    animation: none !important;
   }
 }
 
@@ -132,6 +360,24 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 24%, transparent);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 70%, transparent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 body::before {
@@ -140,16 +386,30 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.45;
-  transition: opacity 0.35s ease;
+  opacity: 0.5;
+  transition: opacity 0.35s ease, background-image 0.35s ease;
   background-image:
-    radial-gradient(ellipse 88% 58% at 6% -8%, rgba(107, 31, 48, 0.1), transparent 52%),
-    radial-gradient(ellipse 72% 48% at 94% 102%, rgba(185, 28, 28, 0.06), transparent 48%);
+    radial-gradient(ellipse 88% 58% at 6% -8%, var(--orb-a), transparent 52%),
+    radial-gradient(ellipse 72% 48% at 94% 102%, var(--orb-b), transparent 48%);
+}
+
+html[data-mode="engineering"] body::before {
+  background-image:
+    linear-gradient(rgba(15, 118, 110, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 118, 110, 0.035) 1px, transparent 1px),
+    radial-gradient(ellipse 88% 58% at 6% -8%, var(--orb-a), transparent 52%),
+    radial-gradient(ellipse 72% 48% at 94% 102%, var(--orb-b), transparent 48%);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+}
+
+html.dark[data-mode="engineering"] body::before {
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.035) 1px, transparent 1px),
+    radial-gradient(ellipse 88% 58% at 6% -8%, var(--orb-a), transparent 52%),
+    radial-gradient(ellipse 72% 48% at 94% 102%, var(--orb-b), transparent 48%);
 }
 
 .dark body::before {
-  opacity: 0.5;
-  background-image:
-    radial-gradient(ellipse 78% 52% at 10% 2%, rgba(220, 38, 38, 0.12), transparent 52%),
-    radial-gradient(ellipse 58% 42% at 94% 94%, rgba(248, 113, 113, 0.08), transparent 45%);
+  opacity: 0.55;
 }

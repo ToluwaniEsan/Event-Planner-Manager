@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, Menu } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { ModeToggle } from "@/components/ModeToggle";
 import { PAGE_CONTAINER } from "@/lib/site-layout";
 
 type SiteHeaderProps = {
@@ -34,7 +35,7 @@ export function SiteHeader({ name, links }: SiteHeaderProps) {
           {name}
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 xl:flex" aria-label="Primary">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -47,6 +48,9 @@ export function SiteHeader({ name, links }: SiteHeaderProps) {
         </nav>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="hidden md:block">
+            <ModeToggle />
+          </div>
           <ThemeToggle />
           <a
             href={links.github}
@@ -74,14 +78,20 @@ export function SiteHeader({ name, links }: SiteHeaderProps) {
             <Mail className="h-4 w-4" aria-hidden />
           </a>
 
-          <details className="relative lg:hidden">
+          <details className="relative xl:hidden">
             <summary className="list-none [&::-webkit-details-marker]:hidden">
-              <span className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--border)] bg-surface text-foreground transition-colors duration-300 dark:border-[color:var(--border-secondary)]">
+              <span className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border border-[var(--border)] bg-surface text-foreground transition-colors duration-300 hover:bg-accent-soft hover:text-highlight dark:border-[color:var(--border-secondary)] dark:hover:bg-white/[0.06]">
                 <Menu className="h-4 w-4" aria-hidden />
                 <span className="sr-only">Open menu</span>
               </span>
             </summary>
-            <div className="theme-surface absolute right-0 mt-2 w-52 rounded-xl border border-[var(--border)] bg-surface p-2 shadow-xl dark:border-[color:var(--border-secondary)]">
+            <div className="theme-surface absolute right-0 mt-2 w-56 rounded-xl border border-[var(--border)] bg-surface p-2 shadow-xl dark:border-[color:var(--border-secondary)]">
+              <div className="mb-2 border-b border-[var(--border)] px-2 pb-3 pt-1 md:hidden">
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
+                  Career lens
+                </p>
+                <ModeToggle showFullLabels className="w-full justify-between" />
+              </div>
               {nav.map((item) => (
                 <Link
                   key={item.href}

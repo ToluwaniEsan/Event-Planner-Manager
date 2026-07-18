@@ -22,15 +22,17 @@ function formatDate(iso: string) {
 
 export function GithubRepoCard({ repo }: GithubRepoCardProps) {
   return (
-    <article className="theme-card group flex h-full flex-col rounded-2xl border border-[var(--border)] bg-surface/70 p-5 shadow-sm backdrop-blur-sm hover:-translate-y-1 hover:border-primary/45 hover:shadow-lg dark:hover:border-highlight/45">
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="text-base font-semibold text-foreground">{repo.name}</h3>
-        <span className="inline-flex items-center gap-1 text-xs text-muted">
+    <article className="theme-card group flex h-full min-w-0 max-w-full flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-surface/70 p-5 shadow-sm backdrop-blur-sm hover:-translate-y-1 hover:border-primary/45 hover:shadow-lg dark:hover:border-highlight/45">
+      <div className="flex min-w-0 items-start justify-between gap-3">
+        <h3 className="min-w-0 flex-1 break-words text-base font-semibold text-foreground [overflow-wrap:anywhere]">
+          {repo.name}
+        </h3>
+        <span className="inline-flex shrink-0 items-center gap-1 text-xs text-muted">
           <Star className="h-3.5 w-3.5" aria-hidden />
           {repo.stargazers_count}
         </span>
       </div>
-      <p className="mt-2 min-h-[2.5rem] text-sm text-muted">
+      <p className="mt-2 min-h-[2.5rem] break-words text-sm leading-relaxed text-muted [overflow-wrap:anywhere]">
         {repo.description || "No description provided."}
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-muted">
@@ -46,7 +48,7 @@ export function GithubRepoCard({ repo }: GithubRepoCardProps) {
         href={repo.html_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex text-sm font-semibold text-highlight underline-offset-4 transition group-hover:translate-x-0.5 hover:underline"
+        className="mt-4 inline-flex text-sm font-semibold text-highlight underline-offset-4 transition-transform duration-300 group-hover:translate-x-0.5 hover:underline"
       >
         Open on GitHub →
       </a>

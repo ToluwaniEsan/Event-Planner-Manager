@@ -1,12 +1,14 @@
 import { Section } from "@/components/Section";
-import { profile } from "@/data/profile";
+import { getDefaultPresentation, profile } from "@/data/profile";
 import { Mail, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/SocialIcons";
 import type { Metadata } from "next";
 
+const defaultPresentation = getDefaultPresentation();
+
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Contact ${profile.identity.name} — email, GitHub, and LinkedIn.`,
+  description: `Contact ${profile.identity.name} — ${defaultPresentation.headline}.`,
 };
 
 function mailLabel(href: string) {
@@ -17,8 +19,9 @@ export default function ContactPage() {
   return (
     <Section eyebrow="Contact" title="Say hello">
       <p className="max-w-2xl text-muted">
-        The fastest way to reach me is email. I&apos;m also happy to connect on LinkedIn or review
-        work on GitHub.
+        The fastest way to reach me is email. I&apos;m open to product and software engineering
+        conversations — internships, collaborations, and roles where requirements clarity and solid
+        systems matter.
       </p>
 
       <ul className="mt-10 space-y-4">

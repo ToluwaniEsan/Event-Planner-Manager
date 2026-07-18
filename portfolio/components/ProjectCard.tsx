@@ -22,7 +22,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
       ) : (
-        <div className="aspect-[16/9] w-full bg-gradient-to-br from-accent-soft via-surface to-transparent" />
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-accent-soft via-surface to-transparent">
+          <div className="absolute inset-0 opacity-70 [background:radial-gradient(circle_at_20%_20%,var(--mode-glow),transparent_45%),radial-gradient(circle_at_80%_70%,var(--orb-b),transparent_40%)]" />
+          <div className="absolute bottom-4 left-4 right-4">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+              Case study
+            </p>
+          </div>
+        </div>
       )}
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg font-semibold text-foreground">{project.title}</h3>
@@ -31,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.stack.map((s) => (
             <li
               key={s}
-              className="rounded-md bg-accent-soft px-2 py-0.5 text-xs text-foreground/90"
+              className="rounded-md bg-accent-soft px-2 py-1 text-xs font-medium text-foreground/85"
             >
               {s}
             </li>
@@ -70,11 +77,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
 export function ProjectCardCompact({ project }: ProjectCardProps) {
   return (
     <article className="theme-card flex h-full flex-col rounded-2xl border border-[var(--border)] bg-surface/60 p-5 shadow-sm backdrop-blur-sm hover:-translate-y-1 hover:border-primary/45 hover:shadow-lg dark:hover:border-highlight/45">
-      <h3 className="text-base font-semibold text-foreground">{project.title}</h3>
-      <p className="mt-2 flex-1 text-sm text-muted">{project.description}</p>
-      <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+        Highlight
+      </p>
+      <h3 className="mt-2 text-base font-semibold text-foreground">{project.title}</h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
         {project.stack.slice(0, 4).map((s) => (
-          <span key={s} className="rounded-md bg-accent-soft/80 px-2 py-0.5 dark:bg-accent-soft/40">
+          <span
+            key={s}
+            className="rounded-md bg-accent-soft px-2 py-1 text-xs font-medium text-foreground/85"
+          >
             {s}
           </span>
         ))}

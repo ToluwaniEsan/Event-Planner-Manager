@@ -6,10 +6,10 @@ type ExperienceTimelineProps = {
 
 export function ExperienceTimeline({ entries }: ExperienceTimelineProps) {
   return (
-    <ol className="relative border-l border-stone-200 pl-6 dark:border-stone-700">
+    <ol className="relative border-l border-[var(--border)] pl-6">
       {entries.map((job) => (
         <li key={`${job.company}-${job.role}-${job.start}`} className="mb-8 last:mb-0">
-          <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
+          <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-primary shadow-[0_0_0_4px_var(--background)] ring-4 ring-[color:var(--mode-glow)]" />
           <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between">
             <div>
               <h3 className="text-lg font-semibold text-foreground">{job.role}</h3>

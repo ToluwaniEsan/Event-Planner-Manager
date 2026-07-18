@@ -1,17 +1,18 @@
 /**
- * Single source of truth for site copy. Sourced from your official resume where noted.
- * Set NEXT_PUBLIC_GITHUB_USERNAME in .env to override the GitHub API user.
+ * Single source of truth for site copy, sourced from Resume_Toluwani_Esan.pdf.
+ * Shared facts stay constant; product/engineering modes only change framing.
  */
+
+import type { CareerMode } from "@/lib/mode";
 
 export type ProfileLinks = {
   github: string;
   linkedin: string;
   email: string;
-  /** Second address shown on Contact next to primary, e.g. personal Gmail. */
   emailSecondary?: string;
-  /** E.164 or formatted; shown on Contact. Optional. */
   phone?: string;
   resumePdf?: string;
+  portfolio?: string;
 };
 
 export type SkillGroup = {
@@ -58,222 +59,316 @@ export type CredentialEntry = {
   kind: "pdf" | "award";
   peekImageSrc?: string;
   peekHint?: string;
-  /** Optional PNG/JPEG/WebP shown in the modal if the PDF iframe won’t load or user switches to preview */
   modalPreviewSrc?: string;
+};
+
+export type GlanceItem = {
+  label: string;
+  value: string;
+};
+
+export type ModePresentation = {
+  headline: string;
+  bio: string;
+  about: string;
+  aboutTitle: string;
+  skillsTitle: string;
+  projectsEyebrow: string;
+  ctaTitle: string;
+  ctaBody: string;
+  glance: GlanceItem[];
+  skills: SkillGroup[];
+  experience: ExperienceEntry[];
+  manualProjects: ManualProject[];
 };
 
 export type Profile = {
   identity: {
     name: string;
-    headline: string;
     location?: string;
-    /** Short intro for the hero and meta description. */
-    bio: string;
-    /** Longer “about” narrative for the About section. */
-    about: string;
-    /** Path under public/, e.g. /photo.jpg */
     avatar?: string;
   };
   links: ProfileLinks;
   githubUsername: string;
-  /** When true, include forked repos from the GitHub API. */
   includeForkedGithubRepos?: boolean;
-  /** When true, include archived repos from the GitHub API. */
   includeArchivedGithubRepos?: boolean;
-  skills: SkillGroup[];
-  experience: ExperienceEntry[];
   education: EducationEntry[];
   honorsLeadership: HonorEntry[];
   certificates: CredentialEntry[];
-  manualProjects: ManualProject[];
+  modes: Record<CareerMode, ModePresentation>;
 };
 
 const envGithub =
-  typeof process !== "undefined"
-    ? process.env.NEXT_PUBLIC_GITHUB_USERNAME
-    : undefined;
+  typeof process !== "undefined" ? process.env.NEXT_PUBLIC_GITHUB_USERNAME : undefined;
+
+const sharedEducation: EducationEntry[] = [
+  {
+    school: "Alabama A&M University",
+    degree: "B.S. Computer Science — Honors Program",
+    start: "2023",
+    end: "Expected May 2027",
+    highlights: [
+      "GPA 3.96 / 4.00 · Huntsville, AL",
+      "Relevant coursework: Data Structures, Theory of Algorithms, Discrete Structures, Digital Logic Design, Probability & Statistics",
+    ],
+  },
+];
+
+const sharedHonors: HonorEntry[] = [
+  {
+    title: "Honors Program Scholar",
+    detail: "University-wide honors curriculum at Alabama A&M University.",
+  },
+  {
+    title: "Presidential Scholar",
+    detail: "Recognized for strong academic performance and campus engagement.",
+  },
+  {
+    title: "Dean's List",
+    detail: "Sustained academic excellence alongside research, tutoring, and project delivery.",
+  },
+];
+
+const sharedCertificates: CredentialEntry[] = [
+  {
+    title: "Professional Scrum Master I (PSM I)",
+    subtitle: "Scrum.org — Agile Scrum accountability and team facilitation.",
+    href: "/certificates/psm-i.pdf",
+    kind: "pdf",
+  },
+  {
+    title: "Leland Product Management Bootcamp",
+    subtitle: "Completion certificate — product management training.",
+    href: "/certificates/leland-pm-bootcamp.pdf",
+    kind: "pdf",
+  },
+  {
+    title: "CodePath TIP101",
+    subtitle: "Certificate of completion — industry-aligned technical foundations.",
+    href: "/certificates/codepath-completion.pdf",
+    kind: "pdf",
+  },
+];
+
+const productMode: ModePresentation = {
+  headline: "Product-minded CS student · Requirements, systems design & delivery",
+  bio: "Computer Science student (GPA 3.96) with hands-on experience in systems design, requirements definition, and product delivery across medical VR, healthcare infrastructure, and ML. Certified Scrum Master.",
+  aboutTitle: "Built for what people need next",
+  about:
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) focused on turning ambiguous needs into clear requirements and shippable systems. Across medical VR research, healthcare platforms, and ML projects, I define service boundaries, align stakeholders, and document decisions so teams can move with confidence. As a PSM I–certified Scrum Master with Leland PM Bootcamp training, I care about measurable outcomes and delivery that holds up after launch.",
+  skillsTitle: "Product & systems toolkit",
+  projectsEyebrow: "Selected product work",
+  ctaTitle: "Let's build the next roadmap",
+  ctaBody:
+    "Open to product, program, and dual-track roles where requirements clarity, stakeholder alignment, and measurable delivery matter.",
+  glance: [
+    { label: "Focus", value: "Requirements, scoping, and outcome-driven delivery" },
+    { label: "Domains", value: "Systems design, requirements definition, and product delivery" },
+    { label: "Methods", value: "Agile Scrum (PSM I), stakeholder communication, product requirements" },
+    { label: "Credentials", value: "PSM I · Leland PM Bootcamp · Honors CS (GPA 3.96)" },
+  ],
+  skills: [
+    {
+      title: "Product Delivery",
+      items: ["Agile Scrum (PSM I)", "Product requirements", "Stakeholder communication"],
+    },
+    {
+      title: "Discovery & Definition",
+      items: [
+        "Requirements definition",
+        "Product requirements",
+        "Service decomposition",
+        "System documentation",
+      ],
+    },
+    {
+      title: "Systems Thinking",
+      items: [
+        "Service decomposition",
+        "ER modeling",
+        "System documentation",
+        "Load testing",
+      ],
+    },
+    {
+      title: "Technical Fluency",
+      items: ["REST API design", "PostgreSQL", "Next.js", "ML pipelines"],
+    },
+  ],
+  experience: [
+    {
+      role: "Undergraduate Research Assistant",
+      company: "College of Engineering & Technology, Alabama A&M University",
+      location: "Huntsville, AL",
+      start: "Spring 2025",
+      end: "Spring 2025",
+      bullets: [
+        "Interviewed clinicians to gather requirements, synthesizing symptoms, edge cases, and references into a data architecture and 3D model pipeline for a Meta Quest 3 medical VR application, resolving 12+ data inconsistencies across two pipeline redesigns.",
+        "Reduced clinician onboarding time by ~20% and doubled processing speed by decoupling sensor data from the render layer.",
+      ],
+    },
+    {
+      role: "Peer Tutor, Python & C++",
+      company: "Tutorial Assistance Network",
+      location: "Huntsville, AL",
+      start: "Spring 2026",
+      end: "Present",
+      bullets: [
+        "Delivered 100+ sessions to 30+ undergraduates; 90%+ satisfaction, 50%+ return rate, outperforming department averages by 15%.",
+      ],
+    },
+  ],
+  manualProjects: [
+    {
+      title: "MediLink Africa — Healthcare Coordination Platform",
+      description:
+        "Independently scoped and architected a multi-service platform spanning a referral engine, SOS dispatch, and admin governance, defining service boundaries so hospitals, labs, pharmacies, and patients each scale independently. Drove API design decisions across 4 domains, selected a relational model after benchmarking 200 simulated concurrent users, and sustained 99.9% uptime over a 2-week load test. Produced system documentation including an ER diagram, API spec, and runbook, cutting referral time by 30%.",
+      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
+      featured: true,
+    },
+    {
+      title: "Event Planner Manager",
+      description:
+        "Defined system requirements for scheduling, budgeting, and vendor booking, normalizing the data model across 3 entities and reducing confirmation time by ~40%; vendor module rated 95% by peer evaluators.",
+      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
+      repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
+      featured: true,
+    },
+    {
+      title: "Academic AI Tutor — Deep Learning Chatbot",
+      description:
+        "Scoped model requirements and designed the architecture and training pipeline for a deep learning chatbot covering 9 academic subjects, coordinating a 4-person team across a TensorFlow/Keras NLP classifier and Flask web server.",
+      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
+      featured: true,
+    },
+  ],
+};
+
+const engineeringMode: ModePresentation = {
+  headline: "Full-stack & systems builder · APIs, data models & ML pipelines",
+  bio: "Computer Science student (GPA 3.96) building systems across medical VR, healthcare infrastructure, and ML—from data architectures and REST APIs to TensorFlow training pipelines. Certified Scrum Master.",
+  aboutTitle: "Built for systems that scale",
+  about:
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) who designs and implements resilient software systems. My work spans Meta Quest 3 medical VR pipelines, multi-service healthcare platforms with PostgreSQL and REST APIs, and deep-learning chatbots with TensorFlow/Keras and Flask. I care about clean service boundaries, load-tested performance, clear documentation, and implementations others can extend with confidence.",
+  skillsTitle: "Engineering stack",
+  projectsEyebrow: "Selected engineering work",
+  ctaTitle: "Let's ship something solid",
+  ctaBody:
+    "Open to software engineering internships and collaborations where architecture, APIs, data integrity, and measurable performance matter.",
+  glance: [
+    { label: "Focus", value: "APIs, data models, pipelines, and performant full-stack systems" },
+    { label: "Stack", value: "Next.js, React, Node.js, PostgreSQL, Prisma, TensorFlow" },
+    { label: "Systems", value: "REST design, ER modeling, load testing, service decomposition" },
+    { label: "Credentials", value: "CodePath TIP101 · PSM I · Honors CS (GPA 3.96)" },
+  ],
+  skills: [
+    {
+      title: "Languages",
+      items: ["Python", "JavaScript", "TypeScript", "C++", "Java"],
+    },
+    {
+      title: "Web & Frameworks",
+      items: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS", "Prisma", "Git/GitHub"],
+    },
+    {
+      title: "Systems & Architecture",
+      items: [
+        "REST API design",
+        "Service decomposition",
+        "ER modeling",
+        "System documentation",
+        "Load testing",
+      ],
+    },
+    {
+      title: "Data & AI",
+      items: ["PostgreSQL", "SQLite", "TensorFlow", "Keras"],
+    },
+    {
+      title: "Engineering Practice",
+      items: ["Git/GitHub", "Requirements definition", "Agile Scrum (PSM I)"],
+    },
+  ],
+  experience: [
+    {
+      role: "Undergraduate Research Assistant",
+      company: "College of Engineering & Technology, Alabama A&M University",
+      location: "Huntsville, AL",
+      start: "Spring 2025",
+      end: "Spring 2025",
+      bullets: [
+        "Built a data architecture and 3D model pipeline for a Meta Quest 3 medical VR application from clinician requirements, resolving 12+ data inconsistencies across two pipeline redesigns.",
+        "Doubled processing speed and reduced clinician onboarding time by ~20% by decoupling sensor data from the render layer.",
+      ],
+    },
+    {
+      role: "Peer Tutor, Python & C++",
+      company: "Tutorial Assistance Network",
+      location: "Huntsville, AL",
+      start: "Spring 2026",
+      end: "Present",
+      bullets: [
+        "Delivered 100+ Python and C++ tutoring sessions to 30+ undergraduates; 90%+ satisfaction and 50%+ return rate, outperforming department averages by 15%.",
+      ],
+    },
+  ],
+  manualProjects: [
+    {
+      title: "MediLink Africa — Healthcare Coordination Platform",
+      description:
+        "Architected a multi-service Next.js platform with REST APIs and PostgreSQL spanning referral, SOS dispatch, and admin governance. Benchmarked a relational model under 200 simulated concurrent users, sustained 99.9% uptime over a 2-week load test, and shipped ER diagrams, API specs, and a runbook that cut referral time by 30%.",
+      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
+      featured: true,
+    },
+    {
+      title: "Event Planner Manager",
+      description:
+        "Implemented a full-stack scheduling, budgeting, and vendor-booking system with Next.js, Node.js, PostgreSQL, TypeScript, Tailwind, and Prisma—normalizing the data model across 3 entities and reducing confirmation time by ~40%.",
+      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
+      repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
+      featured: true,
+    },
+    {
+      title: "Academic AI Tutor — Deep Learning Chatbot",
+      description:
+        "Designed the architecture and training pipeline for a deep learning chatbot covering 9 academic subjects, coordinating a 4-person team on a TensorFlow/Keras NLP classifier and Flask web server (CS-450 group project).",
+      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
+      featured: true,
+    },
+  ],
+};
 
 export const profile: Profile = {
   identity: {
     name: "Toluwani Esan",
-    headline: "Honors CS student · Full-stack platforms, VR research & product craft",
-    location: "Huntsville & Normal, AL · open to internships & co-ops",
-    bio: "Honors Computer Science student at Alabama A&M (3.96 GPA). I build full-stack apps, VR healthcare tooling, and systems designed to stay useful as needs evolve.",
-    about:
-      "I'm a Computer Science student at Alabama A&M University on track to graduate in May 2027, with a 3.96 GPA and Honors distinction. I'm most interested in developing platforms that stand the test of time—work that reflects what people will actually need for years, not just what's trendy this quarter. That mindset shows up in tutoring where I help others debug and reason clearly, in research building 3D medical models in Unreal & Meta Quest 3s, and in full-stack projects from healthcare referrals to unified productivity workflows. I care about fundamentals: reliable APIs, thoughtful UX, measurable impact, and documentation the next person can trust. I'm also PSM I certified and grounded in prioritization and planning from product-management training.",
+    location: "Huntsville, AL · open to internships & co-ops",
     avatar: "/headshot.png",
   },
   links: {
     github: "https://github.com/ToluwaniEsan",
     linkedin: "https://www.linkedin.com/in/esan-toluwani",
     email: "mailto:toluwani.esan@bulldogs.aamu.edu",
-    emailSecondary: "mailto:esantoluwani@gmail.com",
     phone: "(256) 417-7347",
     resumePdf: "/resume.pdf",
+    portfolio: "https://portfolio-one-henna-53.vercel.app",
   },
   githubUsername: envGithub?.trim() || "ToluwaniEsan",
   includeForkedGithubRepos: false,
   includeArchivedGithubRepos: false,
-  skills: [
-    {
-      title: "Languages",
-      items: ["Python", "C++", "JavaScript", "Java"],
-    },
-    {
-      title: "Web & frameworks",
-      items: ["HTML", "CSS", "Next.js", "Node.js", "REST APIs", "OAuth 2.0"],
-    },
-    {
-      title: "ML, VR & cloud",
-      items: ["TensorFlow", "Vertex AI", "Google Cloud Vision", "Unreal Engine", "Meta Quest / VR"],
-    },
-    {
-      title: "Practices & tools",
-      items: ["Git & GitHub", "Scrum (PSM I)", "Product planning", "IT & application controls", "Risk management"],
-    },
-  ],
-  experience: [
-    {
-      role: "Peer Tutor",
-      company: "Tutorial Assistance Network",
-      location: "Huntsville, AL",
-      start: "Summer 2025",
-      end: "Present",
-      bullets: [
-        "Guide students through problem-solving and debugging, strengthening logical reasoning and academic efficiency.",
-        "Tutor Python and C++ with 90%+ positive feedback and a 50%+ client return rate.",
-        "Coordinate with fellow tutors on session follow-ups that lift tutee performance.",
-      ],
-    },
-    {
-      role: "VR / 3D developer (undergraduate research)",
-      company: "College of Engineering and Technology, Alabama A&M University",
-      location: "Huntsville, AL",
-      start: "Spring 2025",
-      end: "Spring 2025",
-      bullets: [
-        "Built interactive 3D human models for medical applications on Meta Quest 3s—muscle analysis and pressure monitoring for wheelchair users.",
-        "Used Unreal Engine and VR workflows alongside clinical modeling requirements.",
-        "Focused on data integrity and reliability in a VR-based medical experience.",
-      ],
-    },
-  ],
-  education: [
-    {
-      school: "Alabama A&M University",
-      degree: "B.S. Computer Science — General CS concentration · Honors Program",
-      start: "2023",
-      end: "Expected May 2027",
-      highlights: [
-        "GPA 3.96 / 4.00 · Presidential Scholar · Dean's List",
-        "Coursework: Python, data structures, C++, Java, discrete structures, advanced programming, digital logic, probability & statistics",
-      ],
-    },
-    {
-      school: "Leland Product Management Bootcamp",
-      degree: "Student · Huntsville, AL",
-      start: "Summer 2025",
-      end: "Summer 2025",
-      highlights: [
-        "Studied with product managers from multiple companies on prioritization, planning, and stakeholder alignment.",
-        "Completed one-on-one sessions with senior PMs for strategic feedback on career direction.",
-        "Strengthened data-informed decision-making tied to business outcomes.",
-      ],
-    },
-    {
-      school: "Scrum.org",
-      degree: "Professional Scrum Master I (PSM I)",
-      start: "Spring 2026",
-      end: "Spring 2026",
-      highlights: [
-        "Earned PSM I by demonstrating Scrum theory—accountabilities, events, artifacts, and commitments—to a professional standard.",
-        "Leveled up facilitation and impediment-removal thinking for iterative delivery alongside coursework and team projects.",
-        "Grounded prioritization and planning in empirical process control, transparency, and inspect-and-adapt feedback loops.",
-      ],
-    },
-  ],
-  honorsLeadership: [
-    {
-      title: "Honors Program Scholar",
-      detail: "University-wide honors curriculum and programming at Alabama A&M.",
-    },
-    {
-      title: "Presidential Scholar",
-      detail: "Recognized for strong academic performance and campus engagement.",
-    },
-    {
-      title: "Dean's List recipient",
-      detail: "Sustained academic excellence while balancing research, tutoring, and build-heavy projects.",
-    },
-    {
-      title: "STEM Day presentation certificate",
-      detail: "Leadership and communication in a STEM outreach setting.",
-    },
-    {
-      title: "Two-time Presidential Medallion — Silver",
-      detail: "Repeated recognition at the Presidential Medallion level (Silver).",
-    },
-    {
-      title: "Leadership through tutoring & product training",
-      detail: "Peer tutor (TAN) with high return rates; Leland PM Bootcamp for stakeholder-ready prioritization and planning.",
-    },
-  ],
-  certificates: [
-    {
-      title: "Professional Scrum Master I (PSM I)",
-      subtitle: "Scrum.org — validates core Scrum Master accountability and team facilitation.",
-      href: "/certificates/psm-i.pdf",
-      kind: "pdf",
-    },
-    {
-      title: "Presidential Medallion — Silver (two-time)",
-      subtitle: "Photo of the award medals (HEIC — download or open with Photos on your device).",
-      href: "/certificates/presidential-medallion.heic",
-      kind: "award",
-      peekHint: "Open / download photo",
-    },
-    {
-      title: "Leland Product Management Bootcamp",
-      subtitle: "Completion certificate — Leland Ventures, Huntsville.",
-      href: "/certificates/leland-pm-bootcamp.pdf",
-      kind: "pdf",
-    },
-    {
-      title: "CodePath TIP101",
-      subtitle: "Certificate of completion — industry-aligned technical foundations.",
-      href: "/certificates/codepath-completion.pdf",
-      kind: "pdf",
-    },
-  ],
-  manualProjects: [
-    {
-      title: "MediLink Africa",
-      description:
-        "End-to-end healthcare referral platform with Next.js, RESTful APIs, and cloud databases—in a simulated environment, cut referral processing time about 30% and sped task completion ~25% through scalable, security-minded frontend work.",
-      stack: ["Next.js", "REST APIs", "Cloud database", "React"],
-      featured: true,
-    },
-    {
-      title: "Unified Workspace",
-      description:
-        "Productivity hub integrating Gmail, Calendar, and Google Tasks via OAuth 2.0 and Google APIs, cutting context switching and improving workflow efficiency 60%+. Added AI-assisted prioritization and scheduling with responsive UI, improving time management roughly 30–40%.",
-      stack: ["Next.js", "OAuth 2.0", "Google APIs", "AI-assisted scheduling"],
-      featured: true,
-    },
-    {
-      title: "AI-powered food recognition & recipe generator (CWM)",
-      description:
-        "Image-to-recipe pipeline using Vertex AI and Google Vision to recognize dishes and return ingredients plus step-by-step instructions, simplifying meal prep.",
-      stack: ["Vertex AI", "Google Vision API", "JavaScript / web UI"],
-      featured: true,
-    },
-    {
-      title: "Event Planner Manager",
-      description:
-        "Full-stack event planning app in this monorepo—auth, relational data, and polished UI for real-world scheduling workflows.",
-      stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL"],
-      repoUrl: "https://github.com/ToluwaniEsan/event-planner",
-      featured: false,
-    },
-  ],
+  education: sharedEducation,
+  honorsLeadership: sharedHonors,
+  certificates: sharedCertificates,
+  modes: {
+    product: productMode,
+    engineering: engineeringMode,
+  },
 };
+
+export function getModePresentation(mode: CareerMode): ModePresentation {
+  return profile.modes[mode];
+}
+
+/** Default (Product) presentation for SSR metadata and static fallbacks. */
+export function getDefaultPresentation(): ModePresentation {
+  return profile.modes.product;
+}

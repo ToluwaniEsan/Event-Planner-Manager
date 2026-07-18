@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileDown } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
 import { PAGE_CONTAINER } from "@/lib/site-layout";
+
+type HeroMetric = {
+  label: string;
+  value: string;
+};
 
 type HeroProps = {
   name: string;
@@ -9,34 +15,65 @@ type HeroProps = {
   bio: string;
   avatar?: string;
   resumePdf?: string;
+  modeLabel?: string;
+  metrics?: HeroMetric[];
 };
 
-export function Hero({ name, headline, bio, avatar, resumePdf }: HeroProps) {
+export function Hero({
+  name,
+  headline,
+  bio,
+  avatar,
+  resumePdf,
+  modeLabel,
+  metrics = [],
+}: HeroProps) {
   return (
     <section className="relative overflow-hidden border-b border-[var(--border)]">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.65] dark:opacity-45"
+        className="pointer-events-none absolute inset-0 opacity-[0.7] dark:opacity-50"
         aria-hidden
       >
-        <div className="absolute left-[5%] top-[12%] h-[min(420px,45vw)] w-[min(420px,45vw)] rounded-full bg-primary/10 blur-3xl dark:bg-primary/15" />
-        <div className="absolute bottom-[8%] right-[3%] h-[min(380px,40vw)] w-[min(380px,40vw)] rounded-full bg-highlight/10 blur-3xl dark:bg-highlight/12" />
+        <div className="hero-orb hero-orb-a absolute left-[4%] top-[10%] h-[min(440px,48vw)] w-[min(440px,48vw)] rounded-full blur-3xl" />
+        <div className="hero-orb hero-orb-b absolute bottom-[6%] right-[2%] h-[min(400px,42vw)] w-[min(400px,42vw)] rounded-full blur-3xl" />
       </div>
 
       <div className={`relative ${PAGE_CONTAINER} py-14 sm:py-16 lg:py-24`}>
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="lg:col-span-7 xl:col-span-7">
-            <p className="hero-animate hero-animate-1 mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
-              Portfolio
-            </p>
+            <div className="hero-animate hero-animate-1 mb-5 flex flex-wrap items-center gap-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
+                Dual-track portfolio
+              </p>
+              {modeLabel ? (
+                <span className="mode-badge rounded-full border border-[var(--border)] bg-surface/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted backdrop-blur-sm">
+                  Viewing · {modeLabel}
+                </span>
+              ) : null}
+            </div>
+
             <h1 className="hero-animate hero-animate-2 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl [font-family:var(--font-display),serif]">
               {name}
             </h1>
-            <p className="hero-animate hero-animate-3 mt-4 max-w-2xl text-lg text-muted sm:text-xl lg:text-2xl">
+            <p
+              key={headline}
+              className="hero-copy hero-animate hero-animate-3 mt-4 max-w-2xl text-pretty text-lg leading-snug text-muted sm:text-xl lg:text-2xl"
+            >
               {headline}
             </p>
-            <p className="hero-animate hero-animate-4 mt-6 max-w-2xl text-base leading-relaxed text-foreground/90 lg:text-lg">
+            <p
+              key={bio}
+              className="hero-copy hero-animate hero-animate-4 mt-6 max-w-2xl text-pretty text-base leading-relaxed text-foreground/90 lg:text-lg"
+            >
               {bio}
             </p>
+
+            <div className="hero-animate hero-animate-5 mt-6">
+              <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                Career lens
+              </p>
+              <ModeToggle size="md" showFullLabels />
+            </div>
 
             <div className="hero-animate hero-animate-5 mt-8 flex flex-wrap items-center gap-3">
               <Link
@@ -65,8 +102,24 @@ export function Hero({ name, headline, bio, avatar, resumePdf }: HeroProps) {
               ) : null}
             </div>
 
+            {metrics.length ? (
+              <dl className="hero-animate hero-animate-5 mt-10 grid gap-3 sm:grid-cols-3">
+                {metrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="metric-card rounded-2xl border border-[var(--border)] bg-surface/70 p-4 shadow-sm backdrop-blur-sm"
+                  >
+                    <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
+                      {metric.label}
+                    </dt>
+                    <dd className="mt-2 text-sm leading-snug text-muted">{metric.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : null}
+
             {avatar ? (
-              <div className="relative mx-auto mt-12 h-40 w-full max-w-sm sm:hidden">
+              <div className="relative mx-auto mt-12 w-full max-w-sm sm:hidden">
                 <Image
                   src={avatar}
                   alt={`${name}, professional headshot`}
@@ -81,8 +134,8 @@ export function Hero({ name, headline, bio, avatar, resumePdf }: HeroProps) {
 
           <div className="flex flex-col gap-8 lg:col-span-5 xl:col-span-5">
             {avatar ? (
-              <div className="relative hidden overflow-hidden rounded-2xl shadow-xl ring-1 ring-[var(--border)] sm:block">
-                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+              <div className="relative hidden overflow-hidden rounded-3xl shadow-xl ring-1 ring-[var(--border)] sm:block">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
                 <Image
                   src={avatar}
                   alt={`${name}, professional headshot`}
@@ -91,6 +144,14 @@ export function Hero({ name, headline, bio, avatar, resumePdf }: HeroProps) {
                   className="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-[1.03]"
                   priority
                 />
+                <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-white/20 bg-background/70 px-4 py-3 backdrop-blur-md">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                    GPA 3.96 · PSM I · Honors CS
+                  </p>
+                  <p className="mt-1 text-sm text-muted">
+                    Systems design · requirements · product delivery
+                  </p>
+                </div>
               </div>
             ) : null}
           </div>

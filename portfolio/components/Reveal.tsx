@@ -8,6 +8,7 @@ import {
   type CSSProperties,
   type ReactNode,
 } from "react";
+import { useCareerMode } from "@/components/ModeProvider";
 
 function subscribeReducedMotion() {
   if (typeof window === "undefined") return () => {};
@@ -38,6 +39,7 @@ type RevealProps = {
 export function Reveal({ children, className = "", delay = 0, variant = "block" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [intersected, setIntersected] = useState(false);
+  const { mode } = useCareerMode();
   const reduceMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
@@ -65,12 +67,22 @@ export function Reveal({ children, className = "", delay = 0, variant = "block" 
     return () => obs.disconnect();
   }, [reduceMotion]);
 
-  const y = variant === "soft" ? 12 : 20;
+  const distance = variant === "soft" ? 12 : 20;
+  const hiddenTransform =
+    mode === "engineering"
+      ? `translateX(${distance}px) scale(0.99)`
+      : `translateY(${distance}px) scale(0.985)`;
+  const duration = mode === "engineering" ? "0.55s" : "0.72s";
+  const easing =
+    mode === "engineering"
+      ? "cubic-bezier(0.16, 1, 0.3, 1)"
+      : "cubic-bezier(0.22, 1, 0.36, 1)";
   const style: CSSProperties = {
     transitionDelay: delay ? `${delay}ms` : undefined,
-    transform: on ? "translateY(0)" : `translateY(${y}px)`,
+    transform: on ? "translate3d(0, 0, 0) scale(1)" : hiddenTransform,
     opacity: on ? 1 : 0,
-    transition: "opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+    filter: on ? "blur(0)" : mode === "engineering" ? "blur(3px)" : "blur(1px)",
+    transition: `opacity ${duration} ${easing}, transform ${duration} ${easing}, filter ${duration} ${easing}`,
   };
 
   return (
