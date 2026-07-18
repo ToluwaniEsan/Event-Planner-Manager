@@ -220,6 +220,14 @@ const productMode: ModePresentation = {
   ],
   manualProjects: [
     {
+      title: "LoadForge — Local Load Testing Platform",
+      description:
+        "Scoped and shipped a learning-first load-testing product: guided recipes, cURL import, multi-step journeys, authentication helpers, pass/fail assertions, and an explainable Error Inspector. Defined safety requirements (authorization gate, SSRF defenses, local-only API, VU/port caps) so beginners can pressure-test APIs without turning the tool into an abuse vector.",
+      stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
+      repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
+      featured: true,
+    },
+    {
       title: "MediLink Africa — Healthcare Coordination Platform",
       description:
         "Independently scoped and architected a multi-service platform spanning a referral engine, SOS dispatch, and admin governance, defining service boundaries so hospitals, labs, pharmacies, and patients each scale independently. Drove API design decisions across 4 domains, selected a relational model after benchmarking 200 simulated concurrent users, and sustained 99.9% uptime over a 2-week load test. Produced system documentation including an ER diagram, API spec, and runbook, cutting referral time by 30%.",
@@ -313,6 +321,14 @@ const engineeringMode: ModePresentation = {
     },
   ],
   manualProjects: [
+    {
+      title: "LoadForge — Local Load Testing Platform",
+      description:
+        "Built a local React + Node load-testing engine with WebSocket live metrics, multi-step journeys, template variables, authentication helpers, DNS-pinned SSRF defenses, and pass/fail assertions. Implemented error sampling with HTML/JSON message extraction so failures show cause and load conditions instead of raw page dumps.",
+      stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
+      repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
+      featured: true,
+    },
     {
       title: "MediLink Africa — Healthcare Coordination Platform",
       description:
