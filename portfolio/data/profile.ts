@@ -357,13 +357,14 @@ const engineeringMode: ModePresentation = {
 export const profile: Profile = {
   identity: {
     name: "Toluwani Esan",
-    location: "Huntsville, AL · open to internships & co-ops",
+    location: "Huntsville, AL · open to product & engineering internships",
     avatar: "/headshot.png",
   },
   links: {
     github: "https://github.com/ToluwaniEsan",
     linkedin: "https://www.linkedin.com/in/esan-toluwani",
     email: "mailto:toluwani.esan@bulldogs.aamu.edu",
+    emailSecondary: "mailto:esantoluwani@gmail.com",
     phone: "(256) 417-7347",
     resumePdf: "/resume.pdf",
     portfolio: "https://portfolio-one-henna-53.vercel.app",
