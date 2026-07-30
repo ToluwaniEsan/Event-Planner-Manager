@@ -1,0 +1,41 @@
+Implemented Vercel Web Analytics for the portfolio project.
+
+## Changes Made
+
+### 1. Installed @vercel/analytics package
+- Added `@vercel/analytics` to package.json dependencies
+- Updated package-lock.json with the new package
+
+### 2. Modified app/layout.tsx
+- Imported the Analytics component from '@vercel/analytics/next'
+- Added the <Analytics /> component to the root layout, placed alongside the existing <SpeedInsights /> component
+
+### Implementation Details
+
+Following the official Vercel Web Analytics quickstart guide (https://vercel.com/docs/analytics/quickstart), I:
+1. Fetched the latest installation instructions from Vercel's documentation
+2. Identified this is a Next.js App Router project (using TypeScript)
+3. Installed the `@vercel/analytics` package using npm
+4. Added the Analytics component import to the root layout file
+5. Placed the <Analytics /> component inside the <body> tag, following the same pattern as the existing SpeedInsights component
+
+The Analytics component is now positioned right before the SpeedInsights component in the body, which ensures it will track page views and other analytics events across the entire application.
+
+### Verification Steps Completed
+
+✓ Build completed successfully (npm run build)
+✓ Linter passed with no errors (npm run lint)
+✓ Package manager lock file (package-lock.json) properly updated
+
+### Files Modified
+
+- portfolio/app/layout.tsx - Added Analytics import and component
+- portfolio/package.json - Added @vercel/analytics dependency
+- portfolio/package-lock.json - Updated with new dependency
+
+### Notes
+
+- The Analytics component follows the same integration pattern as the existing SpeedInsights component
+- No environment variables are required for basic setup
+- Analytics must be enabled in the Vercel dashboard under Analytics settings before deployment for data collection to work
+- The component is framework-aware and will automatically track Next.js route changes
