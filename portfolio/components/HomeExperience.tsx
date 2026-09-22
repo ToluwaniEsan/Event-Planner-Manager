@@ -45,30 +45,29 @@ const RAIL_SECTIONS = [
 /* Verified numbers surfaced across profile.ts copy. */
 const HERO_STATS = [
   { value: 3.96, decimals: 2, label: "GPA \u00b7 Honors Program, AAMU" },
-  { value: 4, label: "Systems shipped \u0026 documented" },
+  { value: 7, label: "Subjects tutored across STEM \u0026 beyond" },
   { value: 100, suffix: "+", label: "Tutoring sessions delivered" },
 ];
 
 const IMPACT_METRICS: Metric[] = [
   {
-    value: 99.9,
-    decimals: 1,
+    value: 40,
     suffix: "%",
-    label: "Uptime sustained over a 2-week load test \u2014 MediLink Africa",
+    label: "Confirmation time cut on Event Planner Manager",
   },
   {
-    value: 200,
-    label: "Simulated concurrent users benchmarked for the data model",
-  },
-  {
-    value: 30,
+    value: 95,
     suffix: "%",
-    label: "Referral time cut by system documentation \u0026 runbook",
+    label: "Vendor module rating from peer evaluators",
   },
   {
     value: 90,
     suffix: "%+",
     label: "Tutoring satisfaction across 100+ sessions",
+  },
+  {
+    value: 9,
+    label: "Academic subjects covered by the AI Tutor chatbot",
   },
 ];
 

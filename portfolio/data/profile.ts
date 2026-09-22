@@ -1,5 +1,5 @@
 /**
- * Single source of truth for site copy, sourced from Resume_Toluwani_Esan.pdf.
+ * Single source of truth for site copy, sourced from Resume_Toluwani_Esan_.pdf.
  * Shared facts stay constant; product/engineering modes only change framing.
  */
 
@@ -148,35 +148,52 @@ const sharedCertificates: CredentialEntry[] = [
     href: "/certificates/codepath-completion.pdf",
     kind: "pdf",
   },
+  {
+    title: "System Design Certificate",
+    subtitle: "Certificate of completion — scalable systems design foundations.",
+    href: "/certificates/system-design.pdf",
+    kind: "pdf",
+  },
 ];
 
 const productMode: ModePresentation = {
-  headline: "Product-minded CS student · Requirements, systems design & delivery",
-  bio: "Computer Science student (GPA 3.96) with hands-on experience in systems design, requirements definition, and product delivery across medical VR, healthcare infrastructure, and ML. Certified Scrum Master.",
+  headline: "Product-minded CS student · Requirements, research & delivery",
+  bio: "Computer Science student (GPA 3.96) and PSM I–certified practitioner with hands-on experience defining product requirements, leading cross-functional teams, and shipping systems end-to-end across healthcare, education, and AI.",
   aboutTitle: "Built for what people need next",
   about:
-    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) focused on turning ambiguous needs into clear requirements and shippable systems. Across medical VR research, healthcare platforms, and ML projects, I define service boundaries, align stakeholders, and document decisions so teams can move with confidence. As a PSM I–certified Scrum Master with Leland PM Bootcamp training, I care about measurable outcomes and delivery that holds up after launch.",
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) focused on turning ambiguous needs into clear requirements and shippable systems. Recently I owned end-to-end website delivery and SEO for Herbal Haven DIY while automating email marketing and inventory ops with AI agents. I also tutor across seven subjects and designed a campus resource guide so students can find support on demand. As a PSM I–certified Scrum Master with Leland PM Bootcamp training, I care about product research, data-informed decisions, and delivery that holds up after launch.",
   skillsTitle: "Product & systems toolkit",
   projectsEyebrow: "Selected product work",
   ctaTitle: "Let's build the next roadmap",
   ctaBody:
     "Open to product, program, and dual-track roles where requirements clarity, stakeholder alignment, and measurable delivery matter.",
   glance: [
-    { label: "Focus", value: "Requirements, scoping, and outcome-driven delivery" },
-    { label: "Domains", value: "Systems design, requirements definition, and product delivery" },
-    { label: "Methods", value: "Agile Scrum (PSM I), stakeholder communication, product requirements" },
-    { label: "Credentials", value: "PSM I · Leland PM Bootcamp · Honors CS (GPA 3.96)" },
+    { label: "Focus", value: "Requirements, research, UX, and outcome-driven delivery" },
+    { label: "Domains", value: "Healthcare, education, AI, and web operations" },
+    {
+      label: "Methods",
+      value: "Agile Scrum (PSM I), product research, data analysis, stakeholder communication",
+    },
+    { label: "Credentials", value: "PSM I · Leland PM · System Design · Honors CS (GPA 3.96)" },
   ],
   skills: [
     {
-      title: "Product Delivery",
-      items: ["Agile Scrum (PSM I)", "Product requirements", "Stakeholder communication"],
+      title: "Product Management",
+      items: [
+        "Agile Scrum (PSM I)",
+        "Product requirements",
+        "Stakeholder communication",
+        "Data analysis",
+        "UI and UX Design",
+        "Product Research",
+        "Delivering technical presentations",
+      ],
     },
     {
       title: "Discovery & Definition",
       items: [
         "Requirements definition",
-        "Product requirements",
+        "Product research",
         "Service decomposition",
         "System documentation",
       ],
@@ -192,33 +209,50 @@ const productMode: ModePresentation = {
     },
     {
       title: "Technical Fluency",
-      items: ["REST API design", "PostgreSQL", "Next.js", "ML pipelines"],
+      items: ["REST API design", "PostgreSQL", "Next.js", "SEO", "AI agent orchestration"],
     },
   ],
   experience: [
     {
-      role: "Undergraduate Research Assistant",
-      company: "College of Engineering & Technology, Alabama A&M University",
-      location: "Huntsville, AL",
-      start: "Spring 2025",
-      end: "Spring 2025",
+      role: "Web & Operations Developer",
+      company: "Herbal Haven DIY",
+      location: "Remote",
+      start: "Summer 2026",
+      end: "Summer 2026",
       bullets: [
-        "Interviewed clinicians to gather requirements, synthesizing symptoms, edge cases, and references into a data architecture and 3D model pipeline for a Meta Quest 3 medical VR application, resolving 12+ data inconsistencies across two pipeline redesigns.",
-        "Reduced clinician onboarding time by ~20% and doubled processing speed by decoupling sensor data from the render layer.",
+        "Owned end-to-end delivery of the company website and engineered a back-end pipeline to automate email marketing campaign distribution, streamlining a previously manual process.",
+        "Led SEO strategy across the site's architecture and content, improving organic search visibility and ranking performance.",
+        "Configured and orchestrated AI agents to automate inventory tracking, low-stock alerting, and daily reporting on platform activity and order status, giving the team real-time operational visibility without manual monitoring.",
       ],
     },
     {
-      role: "Peer Tutor, Python & C++",
+      role: "Peer Tutor and Student Resource Guide",
       company: "Tutorial Assistance Network",
       location: "Huntsville, AL",
       start: "Spring 2026",
       end: "Present",
       bullets: [
-        "Delivered 100+ sessions to 30+ undergraduates; 90%+ satisfaction, 50%+ return rate, outperforming department averages by 15%.",
+        "Delivered 100+ individualized tutoring sessions across seven subjects (Python, C++, Java, C#, Calculus, Psychology, and Physics) for 30+ undergraduates, adapting instructional approach based on student performance and feedback to build a 90%+ satisfaction rate and a strong base of returning students.",
+        "Identified a gap in student awareness of campus support resources and designed a reference guide covering counseling, financial aid, and other key services, distributing it directly to students for consistent, on-demand access.",
       ],
     },
   ],
   manualProjects: [
+    {
+      title: "Event Planner Manager",
+      description:
+        "Defined product requirements for scheduling, budgeting, and vendor booking; normalized the data model across 3 entities, reducing confirmation time by ~40%. Vendor module rated 95% by peer evaluators.",
+      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
+      repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
+      featured: true,
+    },
+    {
+      title: "Academic AI Tutor — Deep Learning Chatbot",
+      description:
+        "Scoped requirements and coordinated a 4-person team to design and deliver a deep learning chatbot covering 9 academic subjects, spanning a TensorFlow/Keras NLP classifier and Flask web server (CS-450 group project).",
+      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
+      featured: true,
+    },
     {
       title: "LoadForge — Local Load Testing Platform",
       description:
@@ -232,42 +266,27 @@ const productMode: ModePresentation = {
       description:
         "Independently scoped and architected a multi-service platform spanning a referral engine, SOS dispatch, and admin governance, defining service boundaries so hospitals, labs, pharmacies, and patients each scale independently. Drove API design decisions across 4 domains, selected a relational model after benchmarking 200 simulated concurrent users, and sustained 99.9% uptime over a 2-week load test. Produced system documentation including an ER diagram, API spec, and runbook, cutting referral time by 30%.",
       stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
-      featured: true,
-    },
-    {
-      title: "Event Planner Manager",
-      description:
-        "Defined system requirements for scheduling, budgeting, and vendor booking, normalizing the data model across 3 entities and reducing confirmation time by ~40%; vendor module rated 95% by peer evaluators.",
-      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
-      repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
-      featured: true,
-    },
-    {
-      title: "Academic AI Tutor — Deep Learning Chatbot",
-      description:
-        "Scoped model requirements and designed the architecture and training pipeline for a deep learning chatbot covering 9 academic subjects, coordinating a 4-person team across a TensorFlow/Keras NLP classifier and Flask web server.",
-      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
-      featured: true,
+      featured: false,
     },
   ],
 };
 
 const engineeringMode: ModePresentation = {
-  headline: "Full-stack & systems builder · APIs, data models & ML pipelines",
-  bio: "Computer Science student (GPA 3.96) building systems across medical VR, healthcare infrastructure, and ML—from data architectures and REST APIs to TensorFlow training pipelines. Certified Scrum Master.",
+  headline: "Full-stack & systems builder · Web ops, APIs & ML pipelines",
+  bio: "Computer Science student (GPA 3.96) shipping websites, automation pipelines, and ML systems—from SEO-backed web platforms and AI agent ops to TensorFlow training pipelines. Certified Scrum Master.",
   aboutTitle: "Built for systems that scale",
   about:
-    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) who designs and implements resilient software systems. My work spans Meta Quest 3 medical VR pipelines, multi-service healthcare platforms with PostgreSQL and REST APIs, and deep-learning chatbots with TensorFlow/Keras and Flask. I care about clean service boundaries, load-tested performance, clear documentation, and implementations others can extend with confidence.",
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) who designs and implements resilient software systems. At Herbal Haven DIY I owned the company website end-to-end, automated email marketing, led SEO, and orchestrated AI agents for inventory and daily reporting. I also build full-stack products with Next.js and PostgreSQL and deep-learning chatbots with TensorFlow/Keras and Flask. I care about clean service boundaries, automation that removes manual toil, and implementations others can extend with confidence.",
   skillsTitle: "Engineering stack",
   projectsEyebrow: "Selected engineering work",
   ctaTitle: "Let's ship something solid",
   ctaBody:
     "Open to software engineering internships and collaborations where architecture, APIs, data integrity, and measurable performance matter.",
   glance: [
-    { label: "Focus", value: "APIs, data models, pipelines, and performant full-stack systems" },
+    { label: "Focus", value: "Web platforms, automation pipelines, APIs, and full-stack systems" },
     { label: "Stack", value: "Next.js, React, Node.js, PostgreSQL, Prisma, TensorFlow" },
-    { label: "Systems", value: "REST design, ER modeling, load testing, service decomposition" },
-    { label: "Credentials", value: "CodePath TIP101 · PSM I · Honors CS (GPA 3.96)" },
+    { label: "Systems", value: "REST design, ER modeling, SEO, AI agent orchestration" },
+    { label: "Credentials", value: "CodePath TIP101 · PSM I · System Design · Honors CS (GPA 3.96)" },
   ],
   skills: [
     {
@@ -290,52 +309,39 @@ const engineeringMode: ModePresentation = {
     },
     {
       title: "Data & AI",
-      items: ["PostgreSQL", "SQLite", "TensorFlow", "Keras"],
+      items: ["PostgreSQL", "SQLite", "TensorFlow", "Keras", "AI agent orchestration"],
     },
     {
       title: "Engineering Practice",
-      items: ["Git/GitHub", "Requirements definition", "Agile Scrum (PSM I)"],
+      items: ["Git/GitHub", "Requirements definition", "Agile Scrum (PSM I)", "SEO"],
     },
   ],
   experience: [
     {
-      role: "Undergraduate Research Assistant",
-      company: "College of Engineering & Technology, Alabama A&M University",
-      location: "Huntsville, AL",
-      start: "Spring 2025",
-      end: "Spring 2025",
+      role: "Web & Operations Developer",
+      company: "Herbal Haven DIY",
+      location: "Remote",
+      start: "Summer 2026",
+      end: "Summer 2026",
       bullets: [
-        "Built a data architecture and 3D model pipeline for a Meta Quest 3 medical VR application from clinician requirements, resolving 12+ data inconsistencies across two pipeline redesigns.",
-        "Doubled processing speed and reduced clinician onboarding time by ~20% by decoupling sensor data from the render layer.",
+        "Owned end-to-end delivery of the company website and engineered a back-end pipeline to automate email marketing campaign distribution, streamlining a previously manual process.",
+        "Led SEO strategy across the site's architecture and content, improving organic search visibility and ranking performance.",
+        "Configured and orchestrated AI agents to automate inventory tracking, low-stock alerting, and daily reporting on platform activity and order status.",
       ],
     },
     {
-      role: "Peer Tutor, Python & C++",
+      role: "Peer Tutor and Student Resource Guide",
       company: "Tutorial Assistance Network",
       location: "Huntsville, AL",
       start: "Spring 2026",
       end: "Present",
       bullets: [
-        "Delivered 100+ Python and C++ tutoring sessions to 30+ undergraduates; 90%+ satisfaction and 50%+ return rate, outperforming department averages by 15%.",
+        "Delivered 100+ individualized tutoring sessions across seven subjects (Python, C++, Java, C#, Calculus, Psychology, and Physics) for 30+ undergraduates; 90%+ satisfaction with a strong return-student base.",
+        "Designed and distributed a campus support resource guide covering counseling, financial aid, and other key services for on-demand student access.",
       ],
     },
   ],
   manualProjects: [
-    {
-      title: "LoadForge — Local Load Testing Platform",
-      description:
-        "Built a local React + Node load-testing engine with WebSocket live metrics, multi-step journeys, template variables, authentication helpers, DNS-pinned SSRF defenses, and pass/fail assertions. Implemented error sampling with HTML/JSON message extraction so failures show cause and load conditions instead of raw page dumps.",
-      stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
-      repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
-      featured: true,
-    },
-    {
-      title: "MediLink Africa — Healthcare Coordination Platform",
-      description:
-        "Architected a multi-service Next.js platform with REST APIs and PostgreSQL spanning referral, SOS dispatch, and admin governance. Benchmarked a relational model under 200 simulated concurrent users, sustained 99.9% uptime over a 2-week load test, and shipped ER diagrams, API specs, and a runbook that cut referral time by 30%.",
-      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
-      featured: true,
-    },
     {
       title: "Event Planner Manager",
       description:
@@ -350,6 +356,21 @@ const engineeringMode: ModePresentation = {
         "Designed the architecture and training pipeline for a deep learning chatbot covering 9 academic subjects, coordinating a 4-person team on a TensorFlow/Keras NLP classifier and Flask web server (CS-450 group project).",
       stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
       featured: true,
+    },
+    {
+      title: "LoadForge — Local Load Testing Platform",
+      description:
+        "Built a local React + Node load-testing engine with WebSocket live metrics, multi-step journeys, template variables, authentication helpers, DNS-pinned SSRF defenses, and pass/fail assertions. Implemented error sampling with HTML/JSON message extraction so failures show cause and load conditions instead of raw page dumps.",
+      stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
+      repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
+      featured: true,
+    },
+    {
+      title: "MediLink Africa — Healthcare Coordination Platform",
+      description:
+        "Architected a multi-service Next.js platform with REST APIs and PostgreSQL spanning referral, SOS dispatch, and admin governance. Benchmarked a relational model under 200 simulated concurrent users, sustained 99.9% uptime over a 2-week load test, and shipped ER diagrams, API specs, and a runbook that cut referral time by 30%.",
+      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
+      featured: false,
     },
   ],
 };
