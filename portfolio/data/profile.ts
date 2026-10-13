@@ -1,5 +1,5 @@
 /**
- * Single source of truth for site copy, sourced from Resume_Toluwani_Esan_.pdf.
+ * Single source of truth for site copy, sourced from Resume_Toluwani_Esan_.pdf (Sep 2026).
  * Shared facts stay constant; product/engineering modes only change framing.
  */
 
@@ -108,24 +108,29 @@ const sharedEducation: EducationEntry[] = [
     start: "2023",
     end: "Expected May 2027",
     highlights: [
-      "GPA 3.96 / 4.00 · Huntsville, AL",
-      "Relevant coursework: Data Structures, Theory of Algorithms, Discrete Structures, Digital Logic Design, Probability & Statistics",
+      "GPA 3.96 / 4.00 · Summa Cum Laude standing · Huntsville, AL",
+      "Coursework: Data Structures, Algorithms, Probability & Statistics",
     ],
   },
 ];
 
 const sharedHonors: HonorEntry[] = [
   {
-    title: "Honors Program Scholar",
-    detail: "University-wide honors curriculum at Alabama A&M University.",
-  },
-  {
     title: "Presidential Scholar",
     detail: "Recognized for strong academic performance and campus engagement.",
   },
   {
+    title: "Honors Program Scholar",
+    detail: "University-wide honors curriculum at Alabama A&M University.",
+  },
+  {
     title: "Dean's List",
-    detail: "Sustained academic excellence alongside research, tutoring, and project delivery.",
+    detail: "Sustained academic excellence alongside product leadership, tutoring, and shipping.",
+  },
+  {
+    title: "Media Sub-unit Lead — RCCG Jesus House Huntsville",
+    detail:
+      "On the media team since 2022; promoted to sub-unit lead in 2025. Help plan and execute 12+ major events per year for audiences of 100+, from promotion through live AV execution and troubleshooting.",
   },
 ];
 
@@ -143,46 +148,52 @@ const sharedCertificates: CredentialEntry[] = [
     kind: "pdf",
   },
   {
-    title: "CodePath TIP101",
-    subtitle: "Certificate of completion — industry-aligned technical foundations.",
-    href: "/certificates/codepath-completion.pdf",
-    kind: "pdf",
-  },
-  {
     title: "System Design Certificate",
     subtitle: "Certificate of completion — scalable systems design foundations.",
     href: "/certificates/system-design.pdf",
     kind: "pdf",
   },
+  {
+    title: "CodePath TIP101",
+    subtitle: "Certificate of completion — industry-aligned technical foundations.",
+    href: "/certificates/codepath-completion.pdf",
+    kind: "pdf",
+  },
 ];
 
 const productMode: ModePresentation = {
-  headline: "Product-minded CS student · Requirements, research & delivery",
-  bio: "Computer Science student (GPA 3.96) and PSM I–certified practitioner with hands-on experience defining product requirements, leading cross-functional teams, and shipping systems end-to-end across healthcare, education, and AI.",
+  headline: "Founder & product lead · Requirements, research & go-to-market",
+  bio: "Computer Science student (GPA 3.96, Summa Cum Laude standing) and PSM I–certified practitioner founding MediLink Africa, shipping web ops systems, and turning user interviews into measurable product outcomes.",
   aboutTitle: "Built for what people need next",
   about:
-    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) focused on turning ambiguous needs into clear requirements and shippable systems. Recently I owned end-to-end website delivery and SEO for Herbal Haven DIY while automating email marketing and inventory ops with AI agents. I also tutor across seven subjects and designed a campus resource guide so students can find support on demand. As a PSM I–certified Scrum Master with Leland PM Bootcamp training, I care about product research, data-informed decisions, and delivery that holds up after launch.",
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, Summa Cum Laude standing, expected May 2027). As Founder & Product Lead of MediLink Africa, I interviewed clinicians, designed a referral platform patients can trust, and advanced past the first round of Startup Abuja (500+ applicants). I've also automated ops for an early-stage e-commerce startup, tutored across seven subjects, and led media execution for 12+ major events a year. I care about user interviews, go-to-market clarity, and delivery that holds up after launch.",
   skillsTitle: "Product & systems toolkit",
   projectsEyebrow: "Selected product work",
   ctaTitle: "Let's build the next roadmap",
   ctaBody:
-    "Open to product, program, and dual-track roles where requirements clarity, stakeholder alignment, and measurable delivery matter.",
+    "Open to product, program, and dual-track roles where discovery, stakeholder alignment, and measurable delivery matter.",
   glance: [
-    { label: "Focus", value: "Requirements, research, UX, and outcome-driven delivery" },
-    { label: "Domains", value: "Healthcare, education, AI, and web operations" },
+    { label: "Focus", value: "User interviews, requirements, UX, and go-to-market" },
+    { label: "Domains", value: "Healthcare referrals, education, AI, and web operations" },
     {
       label: "Methods",
       value: "Agile Scrum (PSM I), product research, data analysis, stakeholder communication",
     },
-    { label: "Credentials", value: "PSM I · Leland PM · System Design · Honors CS (GPA 3.96)" },
+    {
+      label: "Credentials",
+      value: "PSM I · Leland PM · System Design · Google & TMCF AI · GPA 3.96",
+    },
   ],
   skills: [
     {
       title: "Product Management",
       items: [
-        "Agile Scrum (PSM I)",
         "Product requirements",
+        "User interviews",
+        "Agile Scrum (PSM I)",
         "Stakeholder communication",
+        "Go-to-market planning",
+        "System documentation",
         "Data analysis",
         "UI and UX Design",
         "Product Research",
@@ -193,26 +204,38 @@ const productMode: ModePresentation = {
       title: "Discovery & Definition",
       items: [
         "Requirements definition",
+        "User interviews",
         "Product research",
         "Service decomposition",
-        "System documentation",
       ],
     },
     {
       title: "Systems Thinking",
       items: [
-        "Service decomposition",
-        "ER modeling",
         "System documentation",
+        "ER modeling",
+        "API design",
         "Load testing",
       ],
     },
     {
       title: "Technical Fluency",
-      items: ["REST API design", "PostgreSQL", "Next.js", "SEO", "AI agent orchestration"],
+      items: ["Next.js", "React", "PostgreSQL", "SEO", "AI agent orchestration"],
     },
   ],
   experience: [
+    {
+      role: "Founder & Product Lead",
+      company: "MediLink Africa",
+      location: "Remote",
+      start: "Dec 2025",
+      end: "Present",
+      bullets: [
+        "Identified broken referral communication between Nigerian hospitals and patients through interviews with 4 doctors; designed a platform where hospitals route referrals to partner clinics while patients see exactly who receives their data, building accountability into every handoff.",
+        "Architected and deployed the platform end-to-end with a deliberately minimal, low-learning-curve interface based on doctor feedback, plus published API specs; 113+ visits in 30 days with zero reported performance issues.",
+        "Led a partnership-first go-to-market plan, pitching MediLink to a state Commissioner of Health for adoption; advanced past the first round of Startup Abuja (500+ applicants), competing for funding and sponsorship.",
+      ],
+    },
     {
       role: "Web & Operations Developer",
       company: "Herbal Haven DIY",
@@ -220,103 +243,125 @@ const productMode: ModePresentation = {
       start: "Summer 2026",
       end: "Summer 2026",
       bullets: [
-        "Owned end-to-end delivery of the company website and engineered a back-end pipeline to automate email marketing campaign distribution, streamlining a previously manual process.",
-        "Led SEO strategy across the site's architecture and content, improving organic search visibility and ranking performance.",
-        "Configured and orchestrated AI agents to automate inventory tracking, low-stock alerting, and daily reporting on platform activity and order status, giving the team real-time operational visibility without manual monitoring.",
+        "Joined an early-stage e-commerce startup and turned the owner's requirements into automated systems, building a back-end pipeline for email campaigns and buyer tracking that freed ~5–10 hours/week of manual work.",
+        "Led SEO across site architecture and content, taking the site from no search presence to indexed on Google and driving ~10 new organic visits per day.",
+        "Deployed AI agents for inventory tracking, low-stock alerts, and daily order reporting, giving the owner real-time operational visibility without manual monitoring.",
       ],
     },
     {
-      role: "Peer Tutor and Student Resource Guide",
+      role: "Peer Tutor",
       company: "Tutorial Assistance Network",
       location: "Huntsville, AL",
       start: "Spring 2026",
       end: "Present",
       bullets: [
-        "Delivered 100+ individualized tutoring sessions across seven subjects (Python, C++, Java, C#, Calculus, Psychology, and Physics) for 30+ undergraduates, adapting instructional approach based on student performance and feedback to build a 90%+ satisfaction rate and a strong base of returning students.",
-        "Identified a gap in student awareness of campus support resources and designed a reference guide covering counseling, financial aid, and other key services, distributing it directly to students for consistent, on-demand access.",
+        "Delivered 100+ sessions across 7 subjects to 30+ undergraduates, adapting approach from session feedback to sustain 90%+ satisfaction, with most students returning for 2–3+ follow-up sessions.",
+        "Noticed students didn't know where to turn for campus support; created a resource guide covering counseling, financial aid, and key services that the tutoring center adopted and now distributes to students.",
       ],
     },
   ],
   manualProjects: [
     {
+      title: "MediLink Africa — Healthcare Coordination Platform",
+      description:
+        "Founded and shipped a referral platform from clinician interviews through deployment and go-to-market—hospitals route referrals to partner clinics while patients see who receives their data. 113+ visits in 30 days with zero reported performance issues; advanced past Startup Abuja's first round (500+ applicants).",
+      stack: ["Next.js", "REST APIs", "PostgreSQL", "Product discovery", "Go-to-market"],
+      featured: true,
+    },
+    {
       title: "Event Planner Manager",
       description:
-        "Defined product requirements for scheduling, budgeting, and vendor booking; normalized the data model across 3 entities, reducing confirmation time by ~40%. Vendor module rated 95% by peer evaluators.",
-      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
+        "Designed a multi-vendor event marketplace centralizing venue, catering, and decor booking. Defined requirements and a normalized 3-entity data model powering a single confirmation view with SMS vendor reminders; validated the design with 10 working event planners and vendors.",
+      stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
       repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
       featured: true,
     },
     {
-      title: "Academic AI Tutor — Deep Learning Chatbot",
+      title: "ER Triage Training Simulation",
       description:
-        "Scoped requirements and coordinated a 4-person team to design and deliver a deep learning chatbot covering 9 academic subjects, spanning a TensorFlow/Keras NLP classifier and Flask web server (CS-450 group project).",
-      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
+        "Designed a timed mass-casualty triage simulation for healthcare learners using the real START tagging system so skills transfer to ER protocol. Adaptive difficulty based on accuracy and speed; submitted a working prototype for the IEEE Metaverse Grand Challenge 2026 and playtested with classmates.",
+      stack: ["IEEE Metaverse Grand Challenge", "Simulation design", "Healthcare learning"],
+      featured: true,
+    },
+    {
+      title: "Academic AI Tutor",
+      description:
+        "Led a 4-person team from requirements to delivery of an NLP chatbot that classifies student questions and answers from a curated knowledge base across 9 subjects (CS-450).",
+      stack: ["Python", "TensorFlow/Keras", "Flask", "NLP"],
       featured: true,
     },
     {
       title: "LoadForge — Local Load Testing Platform",
       description:
-        "Scoped and shipped a learning-first load-testing product: guided recipes, cURL import, multi-step journeys, authentication helpers, pass/fail assertions, and an explainable Error Inspector. Defined safety requirements (authorization gate, SSRF defenses, local-only API, VU/port caps) so beginners can pressure-test APIs without turning the tool into an abuse vector.",
+        "Scoped and shipped a learning-first load-testing product: guided recipes, cURL import, multi-step journeys, authentication helpers, pass/fail assertions, and an explainable Error Inspector with safety requirements so beginners can pressure-test APIs responsibly.",
       stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
       repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
-      featured: true,
-    },
-    {
-      title: "MediLink Africa — Healthcare Coordination Platform",
-      description:
-        "Independently scoped and architected a multi-service platform spanning a referral engine, SOS dispatch, and admin governance, defining service boundaries so hospitals, labs, pharmacies, and patients each scale independently. Drove API design decisions across 4 domains, selected a relational model after benchmarking 200 simulated concurrent users, and sustained 99.9% uptime over a 2-week load test. Produced system documentation including an ER diagram, API spec, and runbook, cutting referral time by 30%.",
-      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
       featured: false,
     },
   ],
 };
 
 const engineeringMode: ModePresentation = {
-  headline: "Full-stack & systems builder · Web ops, APIs & ML pipelines",
-  bio: "Computer Science student (GPA 3.96) shipping websites, automation pipelines, and ML systems—from SEO-backed web platforms and AI agent ops to TensorFlow training pipelines. Certified Scrum Master.",
+  headline: "Full-stack founder · Platforms, automation & ML",
+  bio: "Computer Science student (GPA 3.96) architecting and deploying MediLink Africa end-to-end, automating e-commerce ops with AI agents, and shipping full-stack and ML systems.",
   aboutTitle: "Built for systems that scale",
   about:
-    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, expected May 2027) who designs and implements resilient software systems. At Herbal Haven DIY I owned the company website end-to-end, automated email marketing, led SEO, and orchestrated AI agents for inventory and daily reporting. I also build full-stack products with Next.js and PostgreSQL and deep-learning chatbots with TensorFlow/Keras and Flask. I care about clean service boundaries, automation that removes manual toil, and implementations others can extend with confidence.",
+    "I'm a Computer Science student at Alabama A&M University (Honors Program, GPA 3.96, Summa Cum Laude standing, expected May 2027). I founded MediLink Africa and deployed the referral platform end-to-end with published API specs—113+ visits in 30 days with zero reported performance issues. At Herbal Haven DIY I built email/buyer-tracking pipelines and AI agents for inventory and daily reporting. I also ship Next.js/PostgreSQL products and TensorFlow/Keras chatbots. I care about clean interfaces, automation that removes manual toil, and implementations others can extend.",
   skillsTitle: "Engineering stack",
   projectsEyebrow: "Selected engineering work",
   ctaTitle: "Let's ship something solid",
   ctaBody:
     "Open to software engineering internships and collaborations where architecture, APIs, data integrity, and measurable performance matter.",
   glance: [
-    { label: "Focus", value: "Web platforms, automation pipelines, APIs, and full-stack systems" },
+    { label: "Focus", value: "End-to-end platforms, automation pipelines, and full-stack systems" },
     { label: "Stack", value: "Next.js, React, Node.js, PostgreSQL, Prisma, TensorFlow" },
-    { label: "Systems", value: "REST design, ER modeling, SEO, AI agent orchestration" },
-    { label: "Credentials", value: "CodePath TIP101 · PSM I · System Design · Honors CS (GPA 3.96)" },
+    { label: "Systems", value: "API design, ER modeling, SEO, AI agent orchestration" },
+    {
+      label: "Credentials",
+      value: "CodePath TIP101 · PSM I · System Design · Google & TMCF AI · GPA 3.96",
+    },
   ],
   skills: [
     {
       title: "Languages",
-      items: ["Python", "JavaScript", "TypeScript", "C++", "Java"],
+      items: ["Python", "TypeScript", "JavaScript", "C++", "Java", "SQL"],
     },
     {
       title: "Web & Frameworks",
-      items: ["Next.js", "React", "Node.js", "Flask", "Tailwind CSS", "Prisma", "Git/GitHub"],
-    },
-    {
-      title: "Systems & Architecture",
-      items: [
-        "REST API design",
-        "Service decomposition",
-        "ER modeling",
-        "System documentation",
-        "Load testing",
-      ],
+      items: ["Next.js", "React", "Node.js", "Flask", "Git"],
     },
     {
       title: "Data & AI",
       items: ["PostgreSQL", "SQLite", "TensorFlow", "Keras", "AI agent orchestration"],
     },
     {
+      title: "Systems & Architecture",
+      items: [
+        "REST API design",
+        "System documentation",
+        "ER modeling",
+        "SEO",
+        "Load testing",
+      ],
+    },
+    {
       title: "Engineering Practice",
-      items: ["Git/GitHub", "Requirements definition", "Agile Scrum (PSM I)", "SEO"],
+      items: ["Git", "Requirements definition", "Agile Scrum (PSM I)"],
     },
   ],
   experience: [
+    {
+      role: "Founder & Product Lead",
+      company: "MediLink Africa",
+      location: "Remote",
+      start: "Dec 2025",
+      end: "Present",
+      bullets: [
+        "Architected and deployed a healthcare referral platform end-to-end from clinician interviews, with a minimal low-learning-curve interface and published API specs; 113+ visits in 30 days with zero reported performance issues.",
+        "Built accountability into referral handoffs so hospitals route to partner clinics while patients see exactly who receives their data.",
+        "Advanced past the first round of Startup Abuja (500+ applicants) while pitching partnership adoption to a state Commissioner of Health.",
+      ],
+    },
     {
       role: "Web & Operations Developer",
       company: "Herbal Haven DIY",
@@ -324,52 +369,59 @@ const engineeringMode: ModePresentation = {
       start: "Summer 2026",
       end: "Summer 2026",
       bullets: [
-        "Owned end-to-end delivery of the company website and engineered a back-end pipeline to automate email marketing campaign distribution, streamlining a previously manual process.",
-        "Led SEO strategy across the site's architecture and content, improving organic search visibility and ranking performance.",
-        "Configured and orchestrated AI agents to automate inventory tracking, low-stock alerting, and daily reporting on platform activity and order status.",
+        "Built a back-end pipeline for email campaigns and buyer tracking that freed ~5–10 hours/week of manual work for an early-stage e-commerce owner.",
+        "Led SEO across site architecture and content, taking the site from no search presence to indexed on Google (~10 new organic visits/day).",
+        "Deployed AI agents for inventory tracking, low-stock alerts, and daily order reporting.",
       ],
     },
     {
-      role: "Peer Tutor and Student Resource Guide",
+      role: "Peer Tutor",
       company: "Tutorial Assistance Network",
       location: "Huntsville, AL",
       start: "Spring 2026",
       end: "Present",
       bullets: [
-        "Delivered 100+ individualized tutoring sessions across seven subjects (Python, C++, Java, C#, Calculus, Psychology, and Physics) for 30+ undergraduates; 90%+ satisfaction with a strong return-student base.",
-        "Designed and distributed a campus support resource guide covering counseling, financial aid, and other key services for on-demand student access.",
+        "Delivered 100+ sessions across 7 subjects to 30+ undergraduates; 90%+ satisfaction with most students returning for 2–3+ follow-ups.",
+        "Created a campus support resource guide the tutoring center adopted and now distributes to students.",
       ],
     },
   ],
   manualProjects: [
     {
+      title: "MediLink Africa — Healthcare Coordination Platform",
+      description:
+        "Architected and deployed a multi-party referral platform with published API specs and a minimal clinician-informed UI. 113+ visits in 30 days with zero reported performance issues.",
+      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
+      featured: true,
+    },
+    {
       title: "Event Planner Manager",
       description:
-        "Implemented a full-stack scheduling, budgeting, and vendor-booking system with Next.js, Node.js, PostgreSQL, TypeScript, Tailwind, and Prisma—normalizing the data model across 3 entities and reducing confirmation time by ~40%.",
-      stack: ["Next.js", "Node.js", "PostgreSQL", "TypeScript", "Tailwind", "Prisma"],
+        "Implemented a multi-vendor event marketplace with Next.js, TypeScript, PostgreSQL, and Prisma—normalized 3-entity data model, single confirmation view, and SMS vendor reminders validated with 10 planners and vendors.",
+      stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
       repoUrl: "https://github.com/ToluwaniEsan/Event-Planner-Manager",
       featured: true,
     },
     {
-      title: "Academic AI Tutor — Deep Learning Chatbot",
+      title: "ER Triage Training Simulation",
       description:
-        "Designed the architecture and training pipeline for a deep learning chatbot covering 9 academic subjects, coordinating a 4-person team on a TensorFlow/Keras NLP classifier and Flask web server (CS-450 group project).",
-      stack: ["Python", "TensorFlow", "Keras", "Flask", "NLP"],
+        "Built a timed mass-casualty triage simulation using the START tagging system with adaptive difficulty based on accuracy and speed; working prototype submitted for IEEE Metaverse Grand Challenge 2026.",
+      stack: ["IEEE Metaverse Grand Challenge", "Simulation", "START triage"],
+      featured: true,
+    },
+    {
+      title: "Academic AI Tutor",
+      description:
+        "Led architecture and delivery of an NLP chatbot that classifies student questions and answers from a curated knowledge base across 9 subjects (Python, TensorFlow/Keras, Flask).",
+      stack: ["Python", "TensorFlow/Keras", "Flask", "NLP"],
       featured: true,
     },
     {
       title: "LoadForge — Local Load Testing Platform",
       description:
-        "Built a local React + Node load-testing engine with WebSocket live metrics, multi-step journeys, template variables, authentication helpers, DNS-pinned SSRF defenses, and pass/fail assertions. Implemented error sampling with HTML/JSON message extraction so failures show cause and load conditions instead of raw page dumps.",
+        "Built a local React + Node load-testing engine with WebSocket live metrics, multi-step journeys, SSRF defenses, and pass/fail assertions.",
       stack: ["React", "TypeScript", "Node.js", "Express", "WebSockets", "Vite"],
       repoUrl: "https://github.com/ToluwaniEsan/LoadForge",
-      featured: true,
-    },
-    {
-      title: "MediLink Africa — Healthcare Coordination Platform",
-      description:
-        "Architected a multi-service Next.js platform with REST APIs and PostgreSQL spanning referral, SOS dispatch, and admin governance. Benchmarked a relational model under 200 simulated concurrent users, sustained 99.9% uptime over a 2-week load test, and shipped ER diagrams, API specs, and a runbook that cut referral time by 30%.",
-      stack: ["Next.js", "REST APIs", "PostgreSQL", "Cloud Infrastructure"],
       featured: false,
     },
   ],
@@ -384,11 +436,11 @@ export const profile: Profile = {
   links: {
     github: "https://github.com/ToluwaniEsan",
     linkedin: "https://www.linkedin.com/in/esan-toluwani",
-    email: "mailto:toluwani.esan@bulldogs.aamu.edu",
-    emailSecondary: "mailto:esantoluwani@gmail.com",
+    email: "mailto:esantoluwani@gmail.com",
+    emailSecondary: "mailto:toluwani.esan@bulldogs.aamu.edu",
     phone: "(256) 417-7347",
     resumePdf: "/resume.pdf",
-    portfolio: "https://portfolio-one-henna-53.vercel.app",
+    portfolio: "https://toluwaniesan.dev",
   },
   githubUsername: envGithub?.trim() || "ToluwaniEsan",
   includeForkedGithubRepos: false,

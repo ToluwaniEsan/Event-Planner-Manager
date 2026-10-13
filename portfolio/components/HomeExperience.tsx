@@ -44,35 +44,35 @@ const RAIL_SECTIONS = [
 
 /* Verified numbers surfaced across profile.ts copy. */
 const HERO_STATS = [
-  { value: 3.96, decimals: 2, label: "GPA \u00b7 Honors Program, AAMU" },
-  { value: 7, label: "Subjects tutored across STEM \u0026 beyond" },
+  { value: 3.96, decimals: 2, label: "GPA \u00b7 Summa Cum Laude standing" },
+  { value: 113, suffix: "+", label: "MediLink visits in 30 days" },
   { value: 100, suffix: "+", label: "Tutoring sessions delivered" },
 ];
 
 const IMPACT_METRICS: Metric[] = [
   {
-    value: 40,
-    suffix: "%",
-    label: "Confirmation time cut on Event Planner Manager",
+    value: 113,
+    suffix: "+",
+    label: "MediLink visits in 30 days with zero reported performance issues",
   },
   {
-    value: 95,
-    suffix: "%",
-    label: "Vendor module rating from peer evaluators",
+    value: 10,
+    label: "Organic visits/day after taking Herbal Haven from no SEO presence to indexed",
   },
   {
     value: 90,
     suffix: "%+",
-    label: "Tutoring satisfaction across 100+ sessions",
+    label: "Tutoring satisfaction across 100+ sessions and 7 subjects",
   },
   {
-    value: 9,
-    label: "Academic subjects covered by the AI Tutor chatbot",
+    value: 12,
+    suffix: "+",
+    label: "Major events/year led as Media Sub-unit Lead (audiences of 100+)",
   },
 ];
 
 const HERO_EYEBROW =
-  "Honors CS \u00b7 Alabama A\u0026M \u00b7 GPA 3.96 \u00b7 Class of 2027";
+  "Founder, MediLink Africa \u00b7 Honors CS \u00b7 GPA 3.96 \u00b7 Class of 2027";
 
 export function HomeExperience({
   profile,
